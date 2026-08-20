@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "Debug NestJS (Watch Mode)",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "bun",
       "runtimeArgs": ["run", "start:debug"],
       "console": "integratedTerminal",
       "restart": true,

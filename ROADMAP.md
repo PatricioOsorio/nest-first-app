@@ -56,7 +56,7 @@ Cada tema sigue el protocolo de [AGENTS.md](./AGENTS.md):
 - **Under the Hood**: `NestFactory.create()`, capa de abstracción HTTP (Express vs Fastify), instanciación del IoC Container.
 - **Paralelismo**: `Program.cs` / `WebApplication.CreateBuilder()` en ASP.NET Core; `main.ts` / `bootstrapApplication` en Angular.
 - **Hands-on Challenge**: Inicializar la aplicación, comprender la estructura de arranque y configurar prefijos globales de API (ej. `/api/v1`).
-- **DoD**: Servidor arrancando con `npm run start:dev`, respondiendo a un health check básico en `/api/v1/health`.
+- **DoD**: Servidor arrancando con `bun run start:dev`, respondiendo a un health check básico en `/api/v1/health`.
 - **Estado**: [ ]
 
 ### 1.2 Controllers, Routing & HTTP Decorators
@@ -233,7 +233,7 @@ Cada tema sigue el protocolo de [AGENTS.md](./AGENTS.md):
 ### 7.3 End-to-End (E2E) Testing con Supertest
 - **Under the Hood**: Pruebas de caja negra levantando la instancia completa de NestJS contra una base de datos de test.
 - **Hands-on Challenge**: Escribir un suite E2E que cubra un flujo completo de usuario (Registro → Login → CRUD → Logout).
-- **DoD**: Suite E2E ejecutándose con `npm run test:e2e` pasando en verde.
+- **DoD**: Suite E2E ejecutándose con `bun run test:e2e` pasando en verde.
 - **Estado**: [ ]
 
 ### 7.4 Health Checks, Logging & Graceful Shutdown

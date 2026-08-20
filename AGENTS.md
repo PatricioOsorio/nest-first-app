@@ -18,9 +18,9 @@ This repository is a **learning sandbox** designed to master **NestJS** and serv
 
 ## 2. Setup Commands
 
-- **Node Version**: Node.js `>=18.x` (LTS recommended)
-- **Install Dependencies**: `npm install`
-- **Nest CLI Global (Optional)**: `npm install -g @nestjs/cli`
+- **Runtime & Package Manager**: **Bun** (`>=1.1.x`, detected `1.3.9`) / Node.js (`>=18.x`)
+- **Install Dependencies**: `bun install`
+- **Nest CLI Global (Optional)**: `bun add -g @nestjs/cli`
 
 ---
 
@@ -54,27 +54,27 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
 
 ## 5. Development Workflow
 
-- **Start dev server (watch mode)**: `npm run start:dev`
-- **Start production server**: `npm run start:prod`
-- **Build project**: `npm run build`
-- **Format code**: `npm run format`
-- **Lint & autofix**: `npm run lint`
+- **Start dev server (watch mode)**: `bun run start:dev`
+- **Start production server**: `bun run start:prod`
+- **Build project**: `bun run build`
+- **Format code**: `bun run format`
+- **Lint & autofix**: `bun run lint`
 
 ### Nest CLI Generators Reference
-- Generate Module: `nest g module <path/name>`
-- Generate Controller: `nest g controller <path/name>`
-- Generate Service: `nest g service <path/name>`
-- Generate Resource (scaffold): `nest g resource <path/name>`
+- Generate Module: `bunx @nestjs/cli g module <path/name>`
+- Generate Controller: `bunx @nestjs/cli g controller <path/name>`
+- Generate Service: `bunx @nestjs/cli g service <path/name>`
+- Generate Resource (scaffold): `bunx @nestjs/cli g resource <path/name>`
 
 ---
 
 ## 6. Testing Instructions
 
-- **Run all unit tests**: `npm run test`
-- **Run unit tests in watch mode**: `npm run test:watch`
-- **Run End-to-End (E2E) tests**: `npm run test:e2e`
-- **Generate test coverage**: `npm run test:cov`
-- **Run single test file**: `npm run test -- <path/to/test.spec.ts>`
+- **Run all unit tests**: `bun run test` (or `bun test`)
+- **Run unit tests in watch mode**: `bun run test:watch`
+- **Run End-to-End (E2E) tests**: `bun run test:e2e`
+- **Generate test coverage**: `bun run test:cov`
+- **Run single test file**: `bun run test -- <path/to/test.spec.ts>`
 
 ---
 
@@ -137,7 +137,7 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
   - `refactor:` Code restructuring without behavior changes.
   - `test:` Adding or updating tests.
   - `docs:` Documentation or roadmap updates.
-- **Verification**: Run `npm run lint` and `npm run test` before finalizing commits.
+- **Verification**: Run `bun run lint` and `bun run test` before finalizing commits.
 
 ---
 
