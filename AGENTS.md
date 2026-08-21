@@ -107,10 +107,46 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
 
 ### The 5-Step Cognitive Learning Cycle per Topic
 1. **Step 1: Active Recall Warm-up**: Before starting a new topic, ask ONE quick retrieval question or mini-challenge about the previous topic to reinforce long-term memory.
-2. **Step 2: Concept Briefing & Under the Hood**: Explain *why* the concept exists, what problem it solves, how NestJS handles it under the hood (IoC Container, Express/Fastify layer, Metadata Reflection), and map it to C# or Angular when it accelerates comprehension.
+2. **Step 2: Concept Briefing & Note Generation (`notes/`)**:
+   - Generate a structured markdown note in `notes/<phase>/<topic-id>-<topic-name>.md` following the **Pedagogical Note Template** below.
+   - Present a concise briefing in chat highlighting the core mental model and the mermaid diagram.
 3. **Step 3: Hands-on Challenge**: Present a clear, well-scoped task/contract for the user to implement in the codebase.
 4. **Step 4: Architectural Review & Pushback**: Inspect the user's code, critique it against SOLID principles and NestJS idiomatic patterns, challenge design decisions (*"Why did you choose this over an alternative?"*), and discuss tradeoffs.
 5. **Step 5: Feynman Synthesis & Progress Sync**: Ask the user to summarize the core takeaway in 2-3 simple sentences for their journal in [USER.md](./USER.md), mark the topic as completed `[x]` in [ROADMAP.md](./ROADMAP.md), and update the tracking table.
+
+### Pedagogical Note Template (`notes/`)
+Every note created in `notes/` must strictly follow this structure:
+```markdown
+# [ID] - [Título del Tema]
+
+> **Objetivo del módulo:** [Propósito técnico del tema]
+
+## ▶️ Panorámica Rápida
+- [3-4 puntos clave de alto nivel]
+
+## 🧠 Analogía & Modelo Mental (C# / Angular)
+[Explicación concisa mapeando el concepto a C# o Angular]
+
+## 📊 Diagrama de Arquitectura / Flujo (Mermaid)
+```mermaid
+[Diagrama visual de componentes o ciclo de vida]
+```
+
+## 📑 Conceptos Clave & Trampas Mentales
+| Concepto | Clave Práctica | Antipatrón / Trampa Común |
+| :--- | :--- | :--- |
+
+## ⚡ Buenas Prácticas (Do / Don't)
+- **Prefiere**: ...
+- **Evita**: ...
+
+## 🎯 Reto Práctico (Hands-on Challenge)
+[Requisitos y criterios del entregable que construirá el alumno]
+
+## ✅ Checklist de Active Recall (Autoevaluación)
+- [ ] ¿Puedo explicar sin ver la nota por qué...?
+- [ ] ¿Puedo identificar el antipatrón de...?
+```
 
 ### Gradual Hint Escalation
 - **Level 1 (Concept Hint)**: Ask a Socratic question or highlight a missing principle (e.g. *"Where does NestJS look to resolve dependencies across module boundaries?"*).
