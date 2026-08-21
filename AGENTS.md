@@ -115,36 +115,64 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
 5. **Step 5: Feynman Synthesis & Progress Sync**: Ask the user to summarize the core takeaway in 2-3 simple sentences for their journal in [USER.md](./USER.md), mark the topic as completed `[x]` in [ROADMAP.md](./ROADMAP.md), and update the tracking table.
 
 ### Pedagogical Note Template (`notes/`)
-Every note created in `notes/` must strictly follow this structure:
+Every note created in `notes/` must be an **exhaustive, rigorous architectural deep dive** following this strict structure:
+
 ```markdown
 # [ID] - [Título del Tema]
 
-> **Objetivo del módulo:** [Propósito técnico del tema]
+> **Objetivo del módulo:** [Propósito técnico y competencias que se dominarán]
 
-## ▶️ Panorámica Rápida
-- [3-4 puntos clave de alto nivel]
+---
 
-## 🧠 Analogía & Modelo Mental (C# / Angular)
-[Explicación concisa mapeando el concepto a C# o Angular]
+## ▶️ Panorámica Rápida & Contexto
+- [3-4 puntos clave de alto nivel que resumen el concepto]
 
-## 📊 Diagrama de Arquitectura / Flujo (Mermaid)
+---
+
+## 🔬 Under the Hood: Fundamentos & Mecánica Interna (Deep Dive)
+[Explicación técnica exhaustiva: cómo funciona el motor interno de NestJS, qué ocurre en la capa HTTP subyacente (Express/Fastify), cómo TypeScript compila decoradores y metadatos con `ReflectMetadata`, y cómo el IoC Container resuelve las instancias y el árbol de dependencias].
+
+---
+
+## 🧠 Analogía & Mapeo Mental (C# / ASP.NET Core & Angular)
+[Comparativa conceptual profunda mapeando las piezas a C# (.NET) y Angular para fijar el modelo mental sin ambigüedades].
+
+---
+
+## 📊 Diagrama de Arquitectura / Ciclo de Vida (Mermaid)
 ```mermaid
-[Diagrama visual de componentes o ciclo de vida]
+[Diagrama visual detallado de flujo de ejecución o árbol de dependencias]
 ```
 
+---
+
+## ⚖️ Tradeoffs & Análisis de Decisiones Arquitectónicas
+- **Cuándo usar este patrón/enfoque**: ...
+- **Cuándo evitarlo**: ...
+- **Impacto en Rendimiento & Mantenibilidad**: ...
+
+---
+
 ## 📑 Conceptos Clave & Trampas Mentales
-| Concepto | Clave Práctica | Antipatrón / Trampa Común |
+| Concepto | Clave Práctica / Under the Hood | Antipatrón / Trampa Común |
 | :--- | :--- | :--- |
 
-## ⚡ Buenas Prácticas (Do / Don't)
+---
+
+## ⚡ Buenas Prácticas de Producción (Do / Don't)
 - **Prefiere**: ...
 - **Evita**: ...
 
-## 🎯 Reto Práctico (Hands-on Challenge)
-[Requisitos y criterios del entregable que construirá el alumno]
+---
 
-## ✅ Checklist de Active Recall (Autoevaluación)
+## 🎯 Reto Práctico (Hands-on Challenge)
+[Requisitos funcionales y arquitectónicos detallados que implementará el alumno en el sandbox].
+
+---
+
+## ✅ Checklist de Active Recall & Autoevaluación
 - [ ] ¿Puedo explicar sin ver la nota por qué...?
+- [ ] ¿Puedo detallar qué ocurre por dentro cuando...?
 - [ ] ¿Puedo identificar el antipatrón de...?
 ```
 
