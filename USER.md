@@ -25,44 +25,44 @@ Este archivo centraliza el perfil del desarrollador, sus objetivos y el estado a
 ## 📊 Bitácora de Avance
 
 ### Estado Actual
-- **Fase Activa**: `Fase 0: Project Setup, Tooling & Production Foundations`
-- **Tema en Curso**: `0.1 Project Scaffolding & Anatomía de Archivos`
+- **Status por tema**: ver [ROADMAP.md](./ROADMAP.md) — fuente única de verdad del progreso.
 - **Última Actualización**: 2026-08-20
 
 ### Registro de Progreso
+Solo fechas y aprendizajes por tema. El estado (⏳/🔄/✅) vive únicamente en [ROADMAP.md](./ROADMAP.md).
 
-| Fase | Tema | Estado | Fecha de Inicio | Fecha de Cierre | Notas / Aprendizajes Clave |
-| :--- | :--- | :---: | :---: | :---: | :--- |
-| **0** | 0.1 Scaffolding & TS Strict | 🔄 En progreso | 2026-08-20 | — | Inicialización con CLI y aliases |
-| **0** | 0.2 ESLint, Prettier & Husky | ⏳ Pendiente | — | — | — |
-| **0** | 0.3 Fail-Fast Env Validation | ⏳ Pendiente | — | — | — |
-| **0** | 0.4 Estructura Feature-First | ⏳ Pendiente | — | — | — |
-| **1** | 1.1 Bootstrap & HTTP Adapter | ⏳ Pendiente | — | — | — |
-| **1** | 1.2 Controllers & Routing | ⏳ Pendiente | — | — | — |
-| **1** | 1.3 Providers & IoC Container | ⏳ Pendiente | — | — | — |
-| **1** | 1.4 Modules & Encapsulation | ⏳ Pendiente | — | — | — |
-| **2** | 2.1 Middlewares | ⏳ Pendiente | — | — | — |
-| **2** | 2.2 Pipes & DTO Validation | ⏳ Pendiente | — | — | — |
-| **2** | 2.3 Guards & Authorization | ⏳ Pendiente | — | — | — |
-| **2** | 2.4 Interceptors & RxJS | ⏳ Pendiente | — | — | — |
-| **2** | 2.5 Exception Filters | ⏳ Pendiente | — | — | — |
-| **2** | 2.6 Custom Decorators | ⏳ Pendiente | — | — | — |
-| **3** | 3.1 Custom Providers & Tokens | ⏳ Pendiente | — | — | — |
-| **3** | 3.2 Dynamic Modules | ⏳ Pendiente | — | — | — |
-| **3** | 3.3 Injection Scopes & Hooks | ⏳ Pendiente | — | — | — |
-| **4** | 4.1 DB Integration & ORM | ⏳ Pendiente | — | — | — |
-| **4** | 4.2 Repository Pattern | ⏳ Pendiente | — | — | — |
-| **4** | 4.3 Transactions & Unit of Work | ⏳ Pendiente | — | — | — |
-| **5** | 5.1 Security Headers & Hashing | ⏳ Pendiente | — | — | — |
-| **5** | 5.2 JWT Auth & Passport | ⏳ Pendiente | — | — | — |
-| **5** | 5.3 RBAC & Permissions | ⏳ Pendiente | — | — | — |
-| **6** | 6.1 Hexagonal Architecture | ⏳ Pendiente | — | — | — |
-| **6** | 6.2 Event-Driven Architecture | ⏳ Pendiente | — | — | — |
-| **6** | 6.3 CQRS Pattern | ⏳ Pendiente | — | — | — |
-| **7** | 7.1 Unit Testing (Jest) | ⏳ Pendiente | — | — | — |
-| **7** | 7.2 Integration Testing | ⏳ Pendiente | — | — | — |
-| **7** | 7.3 E2E Testing (Supertest) | ⏳ Pendiente | — | — | — |
-| **7** | 7.4 Health Checks & Shutdown | ⏳ Pendiente | — | — | — |
+| Fase | Tema (ID) | Fecha de Inicio | Fecha de Cierre | Notas / Aprendizajes Clave |
+| :--- | :---: | :---: | :---: | :--- |
+| **0** | 0.1 | 2026-08-20 | — | Inicialización con CLI y aliases |
+| **0** | 0.2 | — | — | — |
+| **0** | 0.3 | — | — | — |
+| **0** | 0.4 | — | — | — |
+| **1** | 1.1 | — | — | — |
+| **1** | 1.2 | — | — | — |
+| **1** | 1.3 | — | — | — |
+| **1** | 1.4 | — | — | — |
+| **2** | 2.1 | — | — | — |
+| **2** | 2.2 | — | — | — |
+| **2** | 2.3 | — | — | — |
+| **2** | 2.4 | — | — | — |
+| **2** | 2.5 | — | — | — |
+| **2** | 2.6 | — | — | — |
+| **3** | 3.1 | — | — | — |
+| **3** | 3.2 | — | — | — |
+| **3** | 3.3 | — | — | — |
+| **4** | 4.1 | — | — | — |
+| **4** | 4.2 | — | — | — |
+| **4** | 4.3 | — | — | — |
+| **5** | 5.1 | — | — | — |
+| **5** | 5.2 | — | — | — |
+| **5** | 5.3 | — | — | — |
+| **6** | 6.1 | — | — | — |
+| **6** | 6.2 | — | — | — |
+| **6** | 6.3 | — | — | — |
+| **7** | 7.1 | — | — | — |
+| **7** | 7.2 | — | — | — |
+| **7** | 7.3 | — | — | — |
+| **7** | 7.4 | — | — | — |
 
 ---
 

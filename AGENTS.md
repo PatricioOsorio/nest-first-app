@@ -26,13 +26,14 @@ This repository is a **learning sandbox** designed to master **NestJS** and serv
 
 ## 3. Development Style (Ponytail / YAGNI)
 
-Default development philosophy: **ponytail** (maximum simplicity, zero bloat).
+Default development philosophy: **ponytail** (maximum simplicity, zero bloat) — applies to **code only**, never to `notes/` documentation.
 
 - **Rules**:
   - Favor native TypeScript/Node/NestJS capabilities before reaching for third-party libraries.
   - Adhere strictly to **YAGNI** (You Aren't Gonna Need It) and **KISS** (Keep It Simple, Stupid).
   - One clean, expressive line/pattern before fifty lines of unnecessary abstraction.
   - Avoid premature optimization and speculative architecture until a real requirement justifies it.
+  - **Scope boundary**: pedagogical notes (Section 8) are exempt from this philosophy — depth there serves learning, not shipping.
 
 ---
 
@@ -112,12 +113,17 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
    - Present a concise briefing in chat highlighting the core mental model and the mermaid diagram.
 3. **Step 3: Hands-on Challenge**: Present a clear, well-scoped task/contract for the user to implement in the codebase.
 4. **Step 4: Architectural Review & Pushback**: Inspect the user's code, critique it against SOLID principles and NestJS idiomatic patterns, challenge design decisions (*"Why did you choose this over an alternative?"*), and discuss tradeoffs.
-5. **Step 5: Feynman Synthesis & Progress Sync**: Ask the user to summarize the core takeaway in 2-3 simple sentences for their journal in [USER.md](./USER.md), mark the topic as completed `[x]` in [ROADMAP.md](./ROADMAP.md), and update the tracking table.
+5. **Step 5: Feynman Synthesis & Progress Sync**: Ask the user to summarize the core takeaway in 2-3 simple sentences for their journal entry in [USER.md](./USER.md) (Diario de Decisiones section). **[ROADMAP.md](./ROADMAP.md) is the single source of truth for topic status** — update its `**Estado**` marker (`⏳ Pendiente` → `🔄 En progreso` → `✅ Completado`) there only. USER.md's progress table only records dates and key learnings for a topic already marked in ROADMAP.md — never duplicate status there.
 
 ### Pedagogical Note Template (`notes/`)
-Every note created in `notes/` must be an **exhaustive, rigorous architectural deep dive** following this strict structure:
+Every note created in `notes/` must be an **exhaustive, rigorous architectural deep dive** following this strict structure.
 
-```markdown
+Sections are tiered — do not pad a section that adds no real value just to fill the template:
+
+- **Always include** (core, every topic): Panorámica Rápida & Contexto · Under the Hood: Fundamentos & Mecánica Interna · Diagrama de Arquitectura / Ciclo de Vida (Mermaid) · Conceptos Clave & Trampas Mentales · Reto Práctico · Checklist de Active Recall.
+- **Include only when it adds real value to this specific topic** (agent judgment call, not a default): Analogía & Mapeo Mental (C#/Angular) — skip if the topic has no clear equivalent · Tradeoffs & Análisis de Decisiones Arquitectónicas — skip if the topic is mechanical with no real design decision · Buenas Prácticas de Producción (Do/Don't) — skip if already covered by Conceptos Clave & Trampas Mentales.
+
+````markdown
 # [ID] - [Título del Tema]
 
 > **Objetivo del módulo:** [Propósito técnico y competencias que se dominarán]
@@ -174,7 +180,7 @@ Every note created in `notes/` must be an **exhaustive, rigorous architectural d
 - [ ] ¿Puedo explicar sin ver la nota por qué...?
 - [ ] ¿Puedo detallar qué ocurre por dentro cuando...?
 - [ ] ¿Puedo identificar el antipatrón de...?
-```
+````
 
 ### Gradual Hint Escalation
 - **Level 1 (Concept Hint)**: Ask a Socratic question or highlight a missing principle (e.g. *"Where does NestJS look to resolve dependencies across module boundaries?"*).
