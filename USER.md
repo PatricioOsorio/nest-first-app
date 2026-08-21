@@ -26,14 +26,14 @@ Este archivo centraliza el perfil del desarrollador, sus objetivos y el estado a
 
 ### Estado Actual
 - **Status por tema**: ver [ROADMAP.md](./ROADMAP.md) — fuente única de verdad del progreso.
-- **Última Actualización**: 2026-08-20
+- **Última Actualización**: 2026-08-21
 
 ### Registro de Progreso
 Solo fechas y aprendizajes por tema. El estado (⏳/🔄/✅) vive únicamente en [ROADMAP.md](./ROADMAP.md).
 
 | Fase | Tema (ID) | Fecha de Inicio | Fecha de Cierre | Notas / Aprendizajes Clave |
 | :--- | :---: | :---: | :---: | :--- |
-| **0** | 0.1 | 2026-08-20 | — | Inicialización con CLI y aliases |
+| **0** | 0.1 | 2026-08-20 | 2026-08-21 | Scaffold con `nest new` (npm en el prompt, migrado a bun después). `strict:true` es un paquete de flags; flags individuales debajo cascadean y lo sobreescriben — hay que revisar que no queden contradicciones sueltas. Path alias: compile-time resuelve virtual en memoria solo para type-check; el plugin del CLI lo reescribe a ruta relativa real en el build; runtime nunca ve el alias, solo `require` relativo normal. |
 | **0** | 0.2 | — | — | — |
 | **0** | 0.3 | — | — | — |
 | **0** | 0.4 | — | — | — |

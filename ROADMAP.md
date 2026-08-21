@@ -30,7 +30,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: Qué genera el CLI (`nest new`), diferencias entre `tsconfig.json` y `tsconfig.build.json`, rol de `nest-cli.json`, y configuración de Path Aliases (`@/*` o `@core/*`, `@modules/*`).
 - **Hands-on Challenge**: Inicializar el proyecto con `@nestjs/cli`, configurar TypeScript en modo estricto (`strict: true`) y definir alias de importación limpios.
 - **DoD**: Proyecto compilando sin errores con tipado estricto y alias de rutas funcionando.
-- **Estado**: 🔄 En progreso
+- **Estado**: ✅ Completado
 
 ### 0.2 Code Quality Tooling: ESLint, Prettier & Git Hooks
 - **Under the Hood**: Automatización de calidad de código en equipo; `typescript-eslint`, formateo determinista con Prettier, Git Hooks con `Husky` y `lint-staged` para validar staged files, `commitlint` para Conventional Commits.

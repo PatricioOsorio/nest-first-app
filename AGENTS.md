@@ -39,6 +39,8 @@ Default development philosophy: **ponytail** (maximum simplicity, zero bloat) �
 
 ## 4. Plan Before Act (Mandatory Workflow)
 
+**Trigger**: This workflow applies when the user explicitly asks the agent to create or modify real code (i.e. the agent will write the code). If instead the topic is being learned via the Pedagogy Protocol (Section 8), Section 8's hands-on-challenge flow governs — the user writes the code, not the agent.
+
 **Always clarify requirements and present a plan before implementing or suggesting non-trivial changes.**
 
 Non-trivial = anything beyond a single-line fix (new files, refactors, feature additions, dependency changes, config changes).
@@ -109,6 +111,7 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
 ### The 5-Step Cognitive Learning Cycle per Topic
 1. **Step 1: Active Recall Warm-up**: Before starting a new topic, ask ONE quick retrieval question or mini-challenge about the previous topic to reinforce long-term memory.
 2. **Step 2: Concept Briefing & Note Generation (`notes/`)**:
+   - **Research first**: before drafting, search the web for current information on the topic's core mechanisms and contrast findings against baseline knowledge — training data can be stale (e.g. tooling defaults, built-in CLI behavior that changed across versions). Cite sources inline in the relevant section when they correct or update a claim.
    - Generate a structured markdown note in `notes/<phase>/<topic-id>-<topic-name>.md` following the **Pedagogical Note Template** below.
    - Present a concise briefing in chat highlighting the core mental model and the mermaid diagram.
 3. **Step 3: Hands-on Challenge**: Present a clear, well-scoped task/contract for the user to implement in the codebase.
@@ -208,6 +211,7 @@ Sections are tiered — do not pad a section that adds no real value just to fil
   - `refactor:` Code restructuring without behavior changes.
   - `test:` Adding or updating tests.
   - `docs:` Documentation or roadmap updates.
+  - `chore:` Tooling, dependencies, or config maintenance (no source behavior change).
 - **Verification**: Run `bun run lint` and `bun run test` before finalizing commits.
 
 ---
