@@ -16,7 +16,7 @@ Este archivo centraliza el perfil del desarrollador, sus objetivos y el estado a
 
 ## 🎯 Objetivos & Filosofía de Aprendizaje
 
-1. **Comprensión Profunda (Concepts > Code)**: Entender qué ocurre *under the hood* (IoC container, decoradores, reflection metadata, request pipeline) antes de escribir código.
+1. **Comprensión Profunda (Concepts > Code)**: Entender qué ocurre _under the hood_ (IoC container, decoradores, reflection metadata, request pipeline) antes de escribir código.
 2. **Rol de Copiloto Socrático**: El agente guía con analogías (C# / Angular / React) y pistas escalonadas; el desarrollador escribe el código.
 3. **Estándares de Producción**: Construir una aplicación robusta con buenas prácticas empresariales (linters, pre-commit hooks, fail-fast env validation, testing unitario/E2E y Clean Architecture).
 
@@ -25,47 +25,49 @@ Este archivo centraliza el perfil del desarrollador, sus objetivos y el estado a
 ## 📊 Bitácora de Avance
 
 ### Estado Actual
+
 - **Status por tema**: ver [ROADMAP.md](./ROADMAP.md) — fuente única de verdad del progreso.
 - **Última Actualización**: 2026-08-21
 
 ### Registro de Progreso
+
 Solo fechas y aprendizajes por tema. El estado (⏳/🔄/✅) vive únicamente en [ROADMAP.md](./ROADMAP.md).
 
-| Fase | Tema (ID) | Fecha de Inicio | Fecha de Cierre | Notas / Aprendizajes Clave |
-| :--- | :---: | :---: | :---: | :--- |
-| **0** | 0.1 | 2026-08-20 | 2026-08-21 | Scaffold con `nest new` (npm en el prompt, migrado a bun después). `strict:true` es un paquete de flags; flags individuales debajo cascadean y lo sobreescriben — hay que revisar que no queden contradicciones sueltas. Path alias: compile-time resuelve virtual en memoria solo para type-check; el plugin del CLI lo reescribe a ruta relativa real en el build; runtime nunca ve el alias, solo `require` relativo normal. |
-| **0** | 0.2 | — | — | — |
-| **0** | 0.3 | — | — | — |
-| **0** | 0.4 | — | — | — |
-| **1** | 1.1 | — | — | — |
-| **1** | 1.2 | — | — | — |
-| **1** | 1.3 | — | — | — |
-| **1** | 1.4 | — | — | — |
-| **2** | 2.1 | — | — | — |
-| **2** | 2.2 | — | — | — |
-| **2** | 2.3 | — | — | — |
-| **2** | 2.4 | — | — | — |
-| **2** | 2.5 | — | — | — |
-| **2** | 2.6 | — | — | — |
-| **3** | 3.1 | — | — | — |
-| **3** | 3.2 | — | — | — |
-| **3** | 3.3 | — | — | — |
-| **4** | 4.1 | — | — | — |
-| **4** | 4.2 | — | — | — |
-| **4** | 4.3 | — | — | — |
-| **5** | 5.1 | — | — | — |
-| **5** | 5.2 | — | — | — |
-| **5** | 5.3 | — | — | — |
-| **6** | 6.1 | — | — | — |
-| **6** | 6.2 | — | — | — |
-| **6** | 6.3 | — | — | — |
-| **7** | 7.1 | — | — | — |
-| **7** | 7.2 | — | — | — |
-| **7** | 7.3 | — | — | — |
-| **7** | 7.4 | — | — | — |
+| Fase  | Tema (ID) | Fecha de Inicio | Fecha de Cierre | Notas / Aprendizajes Clave                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :---- | :-------: | :-------------: | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **0** |    0.1    |   2026-08-20    |   2026-08-21    | Scaffold con `nest new` (npm en el prompt, migrado a bun después). `strict:true` es un paquete de flags; flags individuales debajo cascadean y lo sobreescriben — hay que revisar que no queden contradicciones sueltas. Path alias: compile-time resuelve virtual en memoria solo para type-check; el plugin del CLI lo reescribe a ruta relativa real en el build; runtime nunca ve el alias, solo `require` relativo normal. |
+| **0** |    0.2    |   2026-08-21    |   2026-08-21    | ESLint = calidad/correctitud de código (bloquea con `error`, o auto-arregla con `--fix` sin bloquear); Prettier = solo formato consistente. `pre-commit` (código) y `commit-msg` (mensaje) son hooks de git separados por diseño — responsabilidad única cada uno. Confirmado con pruebas reales: mensaje fuera de Conventional Commits y error de lint (`any`) ambos rechazan el commit.                                       |
+| **0** |    0.3    |   2026-08-21    |   2026-08-21    | Fail-fast = verificar insumos necesarios (`.env`) al iniciar, no en vuelo — igual que revisar motores en tierra, no en el aire. Zod sin soporte nativo en `@nestjs/config` (a diferencia de Joi) — se conecta vía `validate: (config) => schema.parse(config)`. `.env.example` debe tener valores reales de ejemplo, no la lista de opciones de un enum — eso va al README.                                                     |
+| **0** |    0.4    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **1** |    1.1    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **1** |    1.2    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **1** |    1.3    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **1** |    1.4    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **2** |    2.1    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **2** |    2.2    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **2** |    2.3    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **2** |    2.4    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **2** |    2.5    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **2** |    2.6    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **3** |    3.1    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **3** |    3.2    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **3** |    3.3    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **4** |    4.1    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **4** |    4.2    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **4** |    4.3    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **5** |    5.1    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **5** |    5.2    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **5** |    5.3    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **6** |    6.1    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **6** |    6.2    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **6** |    6.3    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **7** |    7.1    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **7** |    7.2    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **7** |    7.3    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **7** |    7.4    |        —        |        —        | —                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 ---
 
 ## 📝 Diario de Decisiones Técnicas & Aprendizajes
 
-*(Esta sección se irá alimentando al finalizar cada sesión con las conclusiones arquitectónicas y decisiones tomadas).*
+_(Esta sección se irá alimentando al finalizar cada sesión con las conclusiones arquitectónicas y decisiones tomadas)._

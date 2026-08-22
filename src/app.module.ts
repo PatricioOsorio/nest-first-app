@@ -1,9 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { envSchema } from '@/core/env.schema';
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      validate: (config) => envSchema.parse(config),
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
