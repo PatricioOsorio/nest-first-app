@@ -23,9 +23,9 @@
     "strict": true,
 
     "paths": {
-      "@/*": ["src/*"],
       "@/core/*": ["src/core/*"],
-      "@/modules/*": ["src/modules/*"]
+      "@/common/*": ["src/common/*"],
+      "@/users/*": ["src/modules/users/*"]
     }
   }
 }

@@ -14,7 +14,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 
 ## 🗺️ Mapa de Fases
 
-- [ ] **Fase 0: Project Setup, Tooling & Production Foundations**
+- [x] **Fase 0: Project Setup, Tooling & Production Foundations**
 - [ ] **Fase 1: NestJS Core & Primitivas Fundamentales**
 - [ ] **Fase 2: Request-Response Lifecycle & Pipeline**
 - [ ] **Fase 3: Inyección de Dependencias Avanzada & Dynamic Modules**
@@ -53,7 +53,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: Comparativa entre estructura por capas (_layer-first_) vs por características (_feature-first_). Por qué aislar por features (`src/users`, `src/products`) junto a `src/common` o `src/core` mejora la escalabilidad y mantenibilidad.
 - **Hands-on Challenge**: Diseñar la estructura de carpetas base del proyecto siguiendo las convenciones de la industria.
 - **DoD**: Estructura de carpetas creada con separación clara entre módulos de dominio y módulos globales de infraestructura.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ---
 
