@@ -10,6 +10,7 @@ import { HealthModule } from '@/core/health/health.module';
   imports: [
     ConfigModule.forRoot({
       validate: (config) => envSchema.parse(config),
+      isGlobal: true,
     }),
     HealthModule,
   ],

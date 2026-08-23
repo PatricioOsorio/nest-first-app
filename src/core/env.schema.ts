@@ -5,3 +5,5 @@ export const envSchema = z.object({
   PORT: z.preprocess(Number, z.number().int().min(1).max(65535)),
   APP_NAME: z.string(),
 });
+
+export type IEnvSchema = z.infer<typeof envSchema>;
