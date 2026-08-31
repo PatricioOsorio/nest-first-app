@@ -65,7 +65,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Paralelismo**: `Program.cs` / `WebApplication.CreateBuilder()` en ASP.NET Core; `main.ts` / `bootstrapApplication` en Angular.
 - **Hands-on Challenge**: Inicializar la aplicación, comprender la estructura de arranque y configurar prefijos globales de API (ej. `/api/v1`).
 - **DoD**: Servidor arrancando con `bun run start:dev`, respondiendo a un health check básico en `/api/v1/health`.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ### 1.2 Controllers, Routing & HTTP Decorators
 
@@ -73,7 +73,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Paralelismo**: `[ApiController]` y `[Route]` en ASP.NET Core; endpoints REST estándar.
 - **Hands-on Challenge**: Crear un controlador REST completo (GET, POST, PUT, PATCH, DELETE) para un recurso del dominio.
 - **DoD**: Endpoints respondiendo con códigos de estado HTTP semánticos (`200`, `201`, `204`, `404`).
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ### 1.3 Providers, Services & Inversión de Control (IoC)
 

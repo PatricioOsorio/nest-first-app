@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { envSchema } from '@/core/env.schema';
 import { HealthModule } from '@/core/health/health.module';
+import { TasksModule } from './modules/tasks/tasks.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { HealthModule } from '@/core/health/health.module';
       isGlobal: true,
     }),
     HealthModule,
+    TasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],

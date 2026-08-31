@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:8888/api/v1
+
+### ! get all tasks
+GET {{baseUrl}}/tasks
+
+### ! get a task
+GET {{baseUrl}}/tasks/1
+
+### ! get a task - 404
+GET {{baseUrl}}/tasks/error
+
+### create a task
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+
+{
+  "title": "New Task",
+  "description": "Description for New Task"
+}
+
+### ! update a task
+PUT {{baseUrl}}/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Updated Task",
+  "description": "Description for Updated Task",
+  "completed": true
+}
+
+### ! patch a task
+PATCH {{baseUrl}}/tasks/1
+Content-Type: application/json
+
+{
+  "completed": false
+}
+
+### ! delete a task
+DELETE {{baseUrl}}/tasks/1
+
+### ! delete a task - 404
+DELETE {{baseUrl}}/tasks/error
