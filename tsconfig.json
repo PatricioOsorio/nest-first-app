@@ -21,6 +21,8 @@
 
     // strict
     "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
 
     "paths": {
       "@/core/*": ["src/core/*"],
