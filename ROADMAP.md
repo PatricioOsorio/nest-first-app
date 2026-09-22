@@ -81,7 +81,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Paralelismo**: `@Injectable({ providedIn: 'root' })` en Angular; `services.AddScoped<IService, Service>()` en C#.
 - **Hands-on Challenge**: Extraer la lógica de negocio del controlador hacia un servicio inyectado y desacoplado.
 - **DoD**: Controlador sin lógica de negocio; servicio inyectado por constructor con tipado estricto.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ### 1.4 Modules, Encapsulamiento & Re-exports
 
