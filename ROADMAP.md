@@ -15,7 +15,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 ## 🗺️ Mapa de Fases
 
 - [x] **Fase 0: Project Setup, Tooling & Production Foundations**
-- [ ] **Fase 1: NestJS Core & Primitivas Fundamentales**
+- [x] **Fase 1: NestJS Core & Primitivas Fundamentales**
 - [ ] **Fase 2: Request-Response Lifecycle & Pipeline**
 - [ ] **Fase 3: Inyección de Dependencias Avanzada & Dynamic Modules**
 - [ ] **Fase 4: Configuración, Persistencia & Repository Pattern**
@@ -89,7 +89,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Paralelismo**: `NgModule` en Angular; modularización por _bounded contexts_.
 - **Hands-on Challenge**: Crear múltiples módulos y compartir servicios exportados entre ellos.
 - **DoD**: Módulo dependiente consumiendo un servicio sin errores de resolución de dependencias.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ---
 

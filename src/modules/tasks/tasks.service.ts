@@ -1,3 +1,4 @@
+import { UsersService } from '@/users/users.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import {
   CreateTaskDto,
@@ -10,6 +11,7 @@ export interface ITask {
   title: string;
   description: string;
   completed: boolean;
+  userId: string;
 }
 
 const SEED: ITask[] = [
@@ -18,24 +20,29 @@ const SEED: ITask[] = [
     title: 'Task 1',
     description: 'Description for Task 1',
     completed: false,
+    userId: 'TEST1',
   },
   {
     id: '2',
     title: 'Task 2',
     description: 'Description for Task 2',
     completed: true,
+    userId: 'TEST2',
   },
   {
     id: '3',
     title: 'Task 3',
     description: 'Description for Task 3',
     completed: false,
+    userId: 'TEST3',
   },
 ];
 
 @Injectable()
 export class TaskService {
   private readonly tasks: ITask[] = SEED;
+
+  constructor(private readonly usersService: UsersService) {}
 
   findAll(): ITask[] {
     return this.tasks;
@@ -50,11 +57,14 @@ export class TaskService {
   }
 
   create(dto: CreateTaskDto): ITask {
+    const userAssigned = this.usersService.findOne(dto.userId);
+
     const newTask: ITask = {
       id: crypto.randomUUID(),
       title: dto.title,
       description: dto.description,
       completed: false,
+      userId: userAssigned.id,
     };
 
     this.tasks.push(newTask);
@@ -68,6 +78,7 @@ export class TaskService {
     task.title = dto.title;
     task.description = dto.description;
     task.completed = dto.completed;
+    task.userId = dto.userId;
 
     return task;
   }
@@ -78,6 +89,7 @@ export class TaskService {
     task.title = dto.title ?? task.title;
     task.description = dto.description ?? task.description;
     task.completed = dto.completed ?? task.completed;
+    task.userId = dto.userId ?? task.userId;
 
     return task;
   }
