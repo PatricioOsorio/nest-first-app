@@ -100,7 +100,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: Funciones middleware estilo Express que se ejecutan antes de que la petición entre al pipeline de NestJS (`NestMiddleware`).
 - **Hands-on Challenge**: Implementar un middleware de logging y correlación de peticiones (`X-Request-ID`).
 - **DoD**: Cada petición entrante registra su método, URL, duración y asigna un ID único en cabeceras.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ### 2.2 Pipes: Transformación y Validación de Datos
 
