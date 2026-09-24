@@ -6,7 +6,13 @@ export interface IUser {
   email: string;
 }
 
-const SEED: IUser[] = [{ name: 'name 1', email: 'email1', id: 'TEST1' }];
+const SEED: IUser[] = [
+  {
+    id: 'fcea2b64-2dba-47d1-ac32-cdc13541efeb',
+    name: 'name 1',
+    email: 'email1',
+  },
+];
 
 @Injectable()
 export class UsersService {

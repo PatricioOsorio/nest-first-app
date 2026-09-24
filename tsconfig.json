@@ -25,6 +25,7 @@
     "noUnusedParameters": true,
 
     "paths": {
+      "@/*": ["src/*"],
       "@/core/*": ["src/core/*"],
       "@/common/*": ["src/common/*"],
       "@/users/*": ["src/modules/users/*"]

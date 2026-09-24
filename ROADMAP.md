@@ -108,7 +108,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Paralelismo**: Model Validation & DataAnnotations en C# (`[Required]`, `[StringLength]`).
 - **Hands-on Challenge**: Crear DTOs con validación estricta (`whitelist`, `forbidNonWhitelisted`, `transform`) y un Pipe personalizado.
 - **DoD**: Rechazo automático de payloads inválidos con errores `400 Bad Request` formateados.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ### 2.3 Guards: Control de Acceso & Autorización
 
@@ -116,7 +116,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Paralelismo**: `[Authorize]` attributes y Policy Guards en C# / Angular `CanActivateFn`.
 - **Hands-on Challenge**: Crear un Guard para validar tokens/API keys y un decorador personalizado de roles.
 - **DoD**: Peticiones no autorizadas rechazadas con `403 Forbidden` antes de invocar el handler del controlador.
-- **Estado**: ⏳ Pendiente
+- **Estado**: 🔄 En progreso
 
 ### 2.4 Interceptors: AOP (Aspect Oriented Programming) con RxJS
 

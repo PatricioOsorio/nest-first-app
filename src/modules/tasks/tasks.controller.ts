@@ -1,3 +1,4 @@
+import { TrimPipe } from '@/common/pipes/trim.pipe';
 import {
   Body,
   Controller,
@@ -5,6 +6,7 @@ import {
   Get,
   HttpCode,
   Param,
+  ParseUUIDPipe,
   Patch,
   Post,
   Put,
@@ -22,7 +24,7 @@ export class TasksController {
   }
 
   @Get(':id')
-  get(@Param('id') id: string): ITask {
+  get(@Param('id', TrimPipe, ParseUUIDPipe) id: string): ITask {
     return this.taskService.findOne(id);
   }
 
@@ -32,18 +34,24 @@ export class TasksController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() body: UpdateTaskDto): ITask {
+  update(
+    @Param('id', TrimPipe, ParseUUIDPipe) id: string,
+    @Body() body: UpdateTaskDto,
+  ): ITask {
     return this.taskService.replace(id, body);
   }
 
   @Patch(':id')
-  patch(@Param('id') id: string, @Body() body: PatchTaskDto): ITask {
+  patch(
+    @Param('id', TrimPipe, ParseUUIDPipe) id: string,
+    @Body() body: PatchTaskDto,
+  ): ITask {
     return this.taskService.patch(id, body);
   }
 
   @Delete(':id')
   @HttpCode(204)
-  delete(@Param('id') id: string): void {
+  delete(@Param('id', TrimPipe, ParseUUIDPipe) id: string): void {
     return this.taskService.remove(id);
   }
 }

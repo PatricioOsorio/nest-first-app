@@ -1,10 +1,6 @@
 import { UsersService } from '@/users/users.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import {
-  CreateTaskDto,
-  PatchTaskDto,
-  UpdateTaskDto,
-} from 'src/modules/tasks/dto';
+import { CreateTaskDto, PatchTaskDto, UpdateTaskDto } from './dto';
 
 export interface ITask {
   id: string;
@@ -16,21 +12,21 @@ export interface ITask {
 
 const SEED: ITask[] = [
   {
-    id: '1',
+    id: 'dc15f411-3770-420c-9d4e-1f670524ae48',
     title: 'Task 1',
     description: 'Description for Task 1',
     completed: false,
     userId: 'TEST1',
   },
   {
-    id: '2',
+    id: '9a29c615-64ef-4fbd-af4d-a93ec57cf0f2',
     title: 'Task 2',
     description: 'Description for Task 2',
     completed: true,
     userId: 'TEST2',
   },
   {
-    id: '3',
+    id: '0036078f-6214-4657-bef5-77ffccdb0cb7',
     title: 'Task 3',
     description: 'Description for Task 3',
     completed: false,

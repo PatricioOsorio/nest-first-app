@@ -1,6 +1,8 @@
-export class UpdateTaskDto {
-  title!: string;
-  description!: string;
+import { IsBoolean, IsNotEmpty } from 'class-validator';
+import { CreateTaskDto } from './create-task.dto';
+
+export class UpdateTaskDto extends CreateTaskDto {
+  @IsBoolean()
+  @IsNotEmpty()
   completed!: boolean;
-  userId!: string;
 }

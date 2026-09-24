@@ -4,7 +4,7 @@
 GET {{baseUrl}}/tasks
 
 ### ! get a task
-GET {{baseUrl}}/tasks/1
+GET {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
 
 ### ! get a task - 404
 GET {{baseUrl}}/tasks/error
@@ -15,11 +15,12 @@ Content-Type: application/json
 
 {
   "title": "New Task",
-  "description": "Description for New Task"
+  "description": "Description for New Task",
+  "userId" : "fcea2b64-2dba-47d1-ac32-cdc13541efeb",
 }
 
 ### ! update a task
-PUT {{baseUrl}}/tasks/1
+PUT {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
 Content-Type: application/json
 
 {
@@ -29,7 +30,7 @@ Content-Type: application/json
 }
 
 ### ! patch a task
-PATCH {{baseUrl}}/tasks/1
+PATCH {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
 Content-Type: application/json
 
 {
@@ -37,7 +38,7 @@ Content-Type: application/json
 }
 
 ### ! delete a task
-DELETE {{baseUrl}}/tasks/1
+DELETE {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
 
 ### ! delete a task - 404
 DELETE {{baseUrl}}/tasks/error

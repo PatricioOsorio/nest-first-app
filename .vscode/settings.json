@@ -7,7 +7,7 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
 
-  // 🎯 Priorizar imports no relativos / aliases de tsconfig.json
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "javascript.preferences.importModuleSpecifier": "non-relative"
+  // 🎯 Preferir imports relativos cortos para hermanos y alias para cruzar módulos
+  "typescript.preferences.importModuleSpecifier": "shortest",
+  "javascript.preferences.importModuleSpecifier": "shortest"
 }
