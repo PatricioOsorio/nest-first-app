@@ -16,7 +16,7 @@ Este archivo centraliza el perfil del desarrollador, sus objetivos y el estado a
 
 ## 🎯 Objetivos & Filosofía de Aprendizaje
 
-1. **Comprensión Profunda (Concepts > Code)**: Entender qué ocurre _under the hood_ (IoC container, decoradores, reflection metadata, request pipeline) antes de escribir código.
+1. **Práctica Deliberada & Problem-Based Learning**: Fichas técnicas concisas (≤150 líneas) con el modelo mental esencial, reto práctico inmediato, iteración de dudas en código y análisis profundo de variantes arquitectónicas post-implementación.
 2. **Rol de Copiloto Socrático**: El agente guía con analogías (C# / Angular / React) y pistas escalonadas; el desarrollador escribe el código.
 3. **Estándares de Producción**: Construir una aplicación robusta con buenas prácticas empresariales (linters, pre-commit hooks, fail-fast env validation, testing unitario/E2E y Clean Architecture).
 

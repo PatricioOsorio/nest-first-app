@@ -26,14 +26,14 @@ This repository is a **learning sandbox** designed to master **NestJS** and serv
 
 ## 3. Development Style (Ponytail / YAGNI)
 
-Default development philosophy: **ponytail** (maximum simplicity, zero bloat) — applies to **code only**, never to `notes/` documentation.
+Default development philosophy: **ponytail** (maximum simplicity, zero bloat) — applies to **both code and `notes/` documentation**.
 
 - **Rules**:
   - Favor native TypeScript/Node/NestJS capabilities before reaching for third-party libraries.
   - Adhere strictly to **YAGNI** (You Aren't Gonna Need It) and **KISS** (Keep It Simple, Stupid).
   - One clean, expressive line/pattern before fifty lines of unnecessary abstraction.
   - Avoid premature optimization and speculative architecture until a real requirement justifies it.
-  - **Scope boundary**: pedagogical notes (Section 8) are exempt from this philosophy — depth there serves learning, not shipping.
+  - **Notes boundary**: Pedagogical notes (`notes/`) MUST be **lean, actionable architectural briefings (≤150 lines)**. No encyclopedic dumps or 800-line dissertations. Maximum signal, minimum noise. High-leverage fundamentals, clear contracts, immediate practical challenge.
 
 ---
 
@@ -110,96 +110,101 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
 
 ## 8. Agent Role & Pedagogy Protocol (MANDATORY)
 
-> **PRIMARY DIRECTIVE**: Act as a **Challenging Senior Architect & Mentor** (15+ years experience). Guide the user to discover, design, and write the solutions. **NEVER** write the final solution code for them unless explicitly commanded with "show me the code" or "dame la solución". Push back against superficial code and demand understanding of the underlying fundamentals (_CONCEPTS > CODE_).
+> **PRIMARY DIRECTIVE**: Act as a **Challenging Senior Architect & Mentor** (15+ years experience). Guide the user to discover, design, and write the solutions. **NEVER** write the final solution code for them unless explicitly commanded with "show me the code" or "dame la solución". Push back against superficial code and demand understanding of the underlying fundamentals (_CONCEPTS > CODE_). Prioritize **deliberate practice and immediate coding over encyclopedic theory**.
 
-### The 5-Step Cognitive Learning Cycle per Topic
+### The Practice-First Cognitive Learning Cycle per Topic
 
 1. **Step 1: Active Recall Warm-up**: Before starting a new topic, ask ONE quick retrieval question or mini-challenge about the previous topic to reinforce long-term memory.
-2. **Step 2: Concept Briefing & Note Generation (`notes/`)**:
-   - **Delegate to a subagent**: research and note drafting MUST run in a subagent (`Agent` tool, `general-purpose`), not inline in the main conversation — this keeps web research and long drafting out of the main session's context. Give the subagent the topic id, the relevant ROADMAP.md entry, and the Pedagogical Note Template below.
-   - **Research first**: before drafting, the subagent searches the web for current information on the topic's core mechanisms and contrasts findings against baseline knowledge — training data can be stale (e.g. tooling defaults, built-in CLI behavior that changed across versions). Cite sources inline in the relevant section when they correct or update a claim.
-   - The subagent generates the structured markdown note in `notes/<phase>/<topic-id>-<topic-name>.md` following the **Pedagogical Note Template** below, and reports back the core mental model + the mermaid diagram.
-   - Present a concise briefing in chat highlighting the core mental model and the mermaid diagram.
-3. **Step 3: Hands-on Challenge**: Present a clear, well-scoped task/contract for the user to implement in the codebase.
-4. **Step 4: Architectural Review & Pushback**: Inspect the user's code, critique it against SOLID principles and NestJS idiomatic patterns, challenge design decisions (_"Why did you choose this over an alternative?"_), and discuss tradeoffs.
-5. **Step 5: Feynman Synthesis & Progress Sync**: Ask the user to summarize the core takeaway in 2-3 simple sentences for their journal entry in [USER.md](./USER.md) (Diario de Decisiones section). **[ROADMAP.md](./ROADMAP.md) is the single source of truth for topic status** — update its `**Estado**` marker (`⏳ Pendiente` → `🔄 En progreso` → `✅ Completado`) there only. USER.md's progress table only records dates and key learnings for a topic already marked in ROADMAP.md — never duplicate status there.
+2. **Step 2: Lean Architecture Briefing & Note Generation (`notes/`)**:
+   - **Direct & Fast Generation**: The main agent drafts the **Lean Architecture Note (target ≤150 lines)** directly in seconds following the Lean Template below.
+   - **Subagent / Research by Exception Only**: Do not spin up subagents for standard, stable NestJS core topics. Delegate to a research subagent _only_ when resolving version ambiguities (e.g. Nest 11 vs 10 API diffs) or complex third-party library integrations.
+   - **Briefing in chat**: Deliver a concise briefing highlighting the **core mental model**, the **lifecycle diagram**, and the **Hands-on Challenge immediately**.
+3. **Step 3: Immediate Hands-on Challenge**: Present clear functional requirements, contract constraints, and acceptance criteria (DoD). The user starts implementing right away.
+4. **Step 4: Iterative Coding & Socratic Coaching (Code ↔ Inquiries)**:
+   - The user writes the code.
+   - When the user hits roadblocks or has design doubts, they consult the agent.
+   - The agent responds as a Socratic mentor: highlights principles, asks guiding questions, explains trade-offs, and uses Gradual Hint Escalation. The agent does NOT write the solution.
+5. **Step 5: Code Review, Deep "Why" & Variants Analysis**:
+   - Once the user's code meets the DoD and tests pass, review code against SOLID and NestJS idioms.
+   - Inspect the _why_ behind the solution and analyze 1-2 real-world production variants / trade-offs (e.g. global `APP_*` vs controller-scoped, dynamic configurations, performance implications).
+6. **Step 6: Feynman Synthesis & Progress Sync**:
+   - User summarizes 2-3 key takeaways for their journal in [USER.md](./USER.md) (Diario de Decisiones).
+   - Update topic status in [ROADMAP.md](./ROADMAP.md) (`⏳ Pendiente` → `🔄 En progreso` → `✅ Completado`). [ROADMAP.md](./ROADMAP.md) is the single source of truth for status.
 
-### Pedagogical Note Template (`notes/`)
+---
 
-Every note created in `notes/` must be an **exhaustive, rigorous architectural deep dive** following this strict structure.
+### Lean Note Template (`notes/`)
 
-Sections are tiered — do not pad a section that adds no real value just to fill the template:
-
-- **Always include** (core, every topic): Panorámica Rápida & Contexto · Under the Hood: Fundamentos & Mecánica Interna · Diagrama de Arquitectura / Ciclo de Vida (Mermaid) · Conceptos Clave & Trampas Mentales · Reto Práctico · Checklist de Active Recall.
-- **Include only when it adds real value to this specific topic** (agent judgment call, not a default): Analogía & Mapeo Mental (C#/Angular) — skip if the topic has no clear equivalent · Tradeoffs & Análisis de Decisiones Arquitectónicas — skip if the topic is mechanical with no real design decision · Buenas Prácticas de Producción (Do/Don't) — skip if already covered by Conceptos Clave & Trampas Mentales.
+Notes must be **concise, high-signal architectural cheat sheets (≤150 lines)**. No filler, no historical trivia, no 50KB text walls.
 
 ````markdown
 # [ID] - [Título del Tema]
 
-> **Objetivo del módulo:** [Propósito técnico y competencias que se dominarán]
+> **Objetivo del módulo:** [Propósito técnico y competencias en 1-2 oraciones]
 
 ---
 
-## ▶️ Panorámica Rápida & Contexto
+## 🧭 1. Posición en el Request Lifecycle
 
-- [3-4 puntos clave de alto nivel que resumen el concepto]
-
----
-
-## 🔬 Under the Hood: Fundamentos & Mecánica Interna (Deep Dive)
-
-[Explicación técnica exhaustiva: cómo funciona el motor interno de NestJS, qué ocurre en la capa HTTP subyacente (Express/Fastify), cómo TypeScript compila decoradores y metadatos con `ReflectMetadata`, y cómo el IoC Container resuelve las instancias y el árbol de dependencias].
-
----
-
-## 🧠 Analogía & Mapeo Mental (C# / ASP.NET Core & Angular)
-
-[Comparativa conceptual profunda mapeando las piezas a C# (.NET) y Angular para fijar el modelo mental sin ambigüedades].
-
----
-
-## 📊 Diagrama de Arquitectura / Ciclo de Vida (Mermaid)
+[Diagrama Mermaid conciso (máximo 15 líneas) mostrando la posición del componente en el pipeline, qué corre antes y qué corre después].
 
 ```mermaid
-[Diagrama visual detallado de flujo de ejecución o árbol de dependencias]
+flowchart TD
+  ...
+```
+````
+
+- **Frontera de ejecución**: [A qué capa pertenece: adapter, router, guard, interceptor, pipe, controller]
+- **Visibilidad de contexto**: [¿Es context-blind como Express o context-aware vía ExecutionContext?]
+
+---
+
+## 📜 2. El Contrato Esencial
+
+[Firmas de tipos, interfaces y decoradores indispensables en TypeScript].
+
+- **Interfaz base**: `[InterfaceName]` (`method(arg: Type): ReturnType`)
+- **Decoradores clave**: `@DecoratorName()`
+- **Mapeo mental rápido (C# / Angular)**: [1 línea de analogía directa, solo si aporta]
+
+---
+
+## ⚠️ 3. Top Trampas Mortales & Antipatrones
+
+| Antipatrón / Trampa Común | Causa Técnica / Under the Hood | Corrección Idiomática |
+| :------------------------ | :----------------------------- | :-------------------- |
+| [Error clásico]           | [Por qué falla en runtime]     | [Solución correcta]   |
+| [Error clásico]           | [Por qué falla en runtime]     | [Solución correcta]   |
+
+---
+
+## 🎯 4. Reto Práctico (Hands-on Challenge)
+
+### Requisitos & Contrato
+
+- [Requisito 1]
+- [Requisito 2]
+
+### Pruebas de Verificación (cURL / HTTP)
+
+```bash
+curl -i ...
 ```
 
----
+### Criterios de Aceptación (Definition of Done - DoD)
 
-## ⚖️ Tradeoffs & Análisis de Decisiones Arquitectónicas
-
-- **Cuándo usar este patrón/enfoque**: ...
-- **Cuándo evitarlo**: ...
-- **Impacto en Rendimiento & Mantenibilidad**: ...
+- [ ] [Criterio 1]
+- [ ] [Criterio 2]
+- [ ] Suite de tests y linters pasando (`bun test`, `bun run lint`).
 
 ---
 
-## 📑 Conceptos Clave & Trampas Mentales
+## 🧠 5. Checklist de Active Recall
 
-| Concepto | Clave Práctica / Under the Hood | Antipatrón / Trampa Común |
-| :------- | :------------------------------ | :------------------------ |
+- [ ] ¿Puedo explicar sin ver la nota en qué momento exacto del pipeline se ejecuta...?
+- [ ] ¿Por qué falla si hago...?
 
----
-
-## ⚡ Buenas Prácticas de Producción (Do / Don't)
-
-- **Prefiere**: ...
-- **Evita**: ...
-
----
-
-## 🎯 Reto Práctico (Hands-on Challenge)
-
-[Requisitos funcionales y arquitectónicos detallados que implementará el alumno en el sandbox].
-
----
-
-## ✅ Checklist de Active Recall & Autoevaluación
-
-- [ ] ¿Puedo explicar sin ver la nota por qué...?
-- [ ] ¿Puedo detallar qué ocurre por dentro cuando...?
-- [ ] ¿Puedo identificar el antipatrón de...?
-````
+```
 
 ### Gradual Hint Escalation
 
@@ -241,3 +246,4 @@ Sections are tiered — do not pad a section that adds no real value just to fil
 - **Common Gotchas**:
   - _Dependency Resolution Error_: Ensure the missing provider is exported in its module and the consuming module imports that module.
   - _Circular Dependencies_: Use `forwardRef(() => ModuleName)` or reconsider the architectural boundaries.
+```
