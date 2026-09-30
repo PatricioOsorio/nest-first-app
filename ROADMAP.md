@@ -116,14 +116,14 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Paralelismo**: `[Authorize]` attributes y Policy Guards en C# / Angular `CanActivateFn`.
 - **Hands-on Challenge**: Crear un Guard para validar tokens/API keys y un decorador personalizado de roles.
 - **DoD**: Peticiones no autorizadas rechazadas con `403 Forbidden` antes de invocar el handler del controlador.
-- **Estado**: 🔄 En progreso
+- **Estado**: ✅ Completado
 
 ### 2.4 Interceptors: AOP (Aspect Oriented Programming) con RxJS
 
 - **Under the Hood**: `NestInterceptor`, `CallHandler`, streams de RxJS para mutar la respuesta, medir tiempos de ejecución o implementar caching.
 - **Hands-on Challenge**: Crear un interceptor que estandarice la estructura de respuesta (`{ success: true, data: ..., timestamp: ... }`) y mida el tiempo de respuesta.
 - **DoD**: Todas las respuestas salientes envueltas en el formato estándar unificado.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ### 2.5 Exception Filters: Manejo Global y Limpio de Errores
 

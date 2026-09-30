@@ -33,7 +33,7 @@ Default development philosophy: **ponytail** (maximum simplicity, zero bloat) �
   - Adhere strictly to **YAGNI** (You Aren't Gonna Need It) and **KISS** (Keep It Simple, Stupid).
   - One clean, expressive line/pattern before fifty lines of unnecessary abstraction.
   - Avoid premature optimization and speculative architecture until a real requirement justifies it.
-  - **Notes boundary**: Pedagogical notes (`notes/`) MUST be **lean, actionable architectural briefings (≤150 lines)**. No encyclopedic dumps or 800-line dissertations. Maximum signal, minimum noise. High-leverage fundamentals, clear contracts, immediate practical challenge.
+  - **Notes boundary**: Pedagogical notes (`notes/`) cut the fat on theory (no historical trivia or encyclopedic dumps), but **the Hands-on Challenge must NEVER be compromised or ambiguated**. Theory is lean; the challenge specification is exhaustive: explicit functional requirements, input/output contracts, edge cases, and verifiable criteria. Zero ambiguity on _what_ is expected, so the user's cognitive energy is 100% focused on _how_ to architect and implement it.
 
 ---
 
@@ -116,10 +116,19 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
 
 1. **Step 1: Active Recall Warm-up**: Before starting a new topic, ask ONE quick retrieval question or mini-challenge about the previous topic to reinforce long-term memory.
 2. **Step 2: Lean Architecture Briefing & Note Generation (`notes/`)**:
-   - **Direct & Fast Generation**: The main agent drafts the **Lean Architecture Note (target ≤150 lines)** directly in seconds following the Lean Template below.
+   - **Direct & Fast Generation**: The main agent drafts the **Lean Architecture Note** directly in seconds following the Lean Template below.
+   - **Must include Real-World Use Cases & Decision Matrix**: Explicitly answers _when_ to use this component in real production and _why_ not to use another pipeline layer (e.g., Middleware vs Guard vs Interceptor).
    - **Subagent / Research by Exception Only**: Do not spin up subagents for standard, stable NestJS core topics. Delegate to a research subagent _only_ when resolving version ambiguities (e.g. Nest 11 vs 10 API diffs) or complex third-party library integrations.
-   - **Briefing in chat**: Deliver a concise briefing highlighting the **core mental model**, the **lifecycle diagram**, and the **Hands-on Challenge immediately**.
-3. **Step 3: Immediate Hands-on Challenge**: Present clear functional requirements, contract constraints, and acceptance criteria (DoD). The user starts implementing right away.
+   - **Briefing in chat**: Deliver a concise briefing highlighting the **core mental model**, the **lifecycle diagram**, the **real-world use cases**, and the **Hands-on Challenge immediately**.
+3. **Step 3: Immediate Hands-on Challenge (The Centerpiece of Learning)**:
+   - The challenge is where deep learning occurs: **connecting architectural concepts through deliberate practice**.
+   - **Exhaustive Specification, Zero Ambiguity**: The challenge MUST be thoroughly specified. Never compress, truncate, or leave requirements ambiguous to save space. Theory is lean; the challenge is precise and comprehensive.
+   - **Components of an Unambiguous Challenge**:
+     - _Exact Functional Responsibilities_: What each class, method, or provider must do.
+     - _Explicit Contracts_: Exact TypeScript interfaces, generic types, method signatures, and expected JSON shapes (both input and output).
+     - _Edge Cases & Boundary Conditions_: Explicit rules for empty payloads, `undefined`, nulls, or special HTTP codes (e.g. `204 No Content`).
+     - _Verification Matrix_: Concrete cURL / HTTP client test cases with expected status codes and payloads.
+   - **Crucial Rule**: _High specification clarity $\neq$ giving away the solution code_. Clear requirements free the developer from guessing what is expected, allowing 100% of cognitive energy to focus on architectural reasoning, design decisions, and concept synthesis.
 4. **Step 4: Iterative Coding & Socratic Coaching (Code ↔ Inquiries)**:
    - The user writes the code.
    - When the user hits roadblocks or has design doubts, they consult the agent.
@@ -135,7 +144,7 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
 
 ### Lean Note Template (`notes/`)
 
-Notes must be **concise, high-signal architectural cheat sheets (≤150 lines)**. No filler, no historical trivia, no 50KB text walls.
+Notes must be **high-signal architectural cheat sheets**. Cut the fluff on theory (no historical trivia or encyclopedic dumps), but **maximize precision and depth in the Hands-on Challenge and Real-World Decision Matrix**.
 
 ````markdown
 # [ID] - [Título del Tema]
@@ -152,7 +161,6 @@ Notes must be **concise, high-signal architectural cheat sheets (≤150 lines)**
 flowchart TD
   ...
 ```
-````
 
 - **Frontera de ejecución**: [A qué capa pertenece: adapter, router, guard, interceptor, pipe, controller]
 - **Visibilidad de contexto**: [¿Es context-blind como Express o context-aware vía ExecutionContext?]
@@ -169,7 +177,16 @@ flowchart TD
 
 ---
 
-## ⚠️ 3. Top Trampas Mortales & Antipatrones
+## 💼 3. Casos de Uso del Mundo Real & Matriz de Decisión
+
+| Escenario de Producción | ¿Por qué usar este componente? | ¿Por qué NO otra alternativa (Middleware/Guard/Pipe/Filter)? |
+| :---------------------- | :----------------------------- | :----------------------------------------------------------- |
+| [Escenario real 1]      | [Razón técnica / ventaja AOP]  | [Por qué falla o no es idiomático en otra capa]              |
+| [Escenario real 2]      | [Razón técnica / ventaja AOP]  | [Por qué falla o no es idiomático en otra capa]              |
+
+---
+
+## ⚠️ 4. Top Trampas Mortales & Antipatrones
 
 | Antipatrón / Trampa Común | Causa Técnica / Under the Hood | Corrección Idiomática |
 | :------------------------ | :----------------------------- | :-------------------- |
@@ -178,33 +195,46 @@ flowchart TD
 
 ---
 
-## 🎯 4. Reto Práctico (Hands-on Challenge)
+## 🎯 5. Reto Práctico (Hands-on Challenge)
 
-### Requisitos & Contrato
+### Contexto & Objetivo de Negocio
 
-- [Requisito 1]
-- [Requisito 2]
+[Qué problema real resuelve este reto y por qué se diseña de esta manera]
+
+### Especificación Funcional & Contratos Detallados
+
+- **Componente A (`path/to/file.ts`)**:
+  - _Responsabilidad_: Qué debe hacer y en qué fase del pipeline.
+  - _Contrato / Interfaces_: Firmas de métodos, tipos genéricos, campos requeridos.
+- **Componente B (`path/to/file.ts`)**:
+  - _Comportamiento_: Reglas de negocio y transformaciones esperadas.
+  - _Casos Borde (Edge Cases)_: Manejo de respuestas vacías (`204 No Content`, `undefined`, arrays vacíos) o errores.
+- **Integración en el Pipeline**:
+  - Cómo y dónde se registra (módulo, token, scope).
 
 ### Pruebas de Verificación (cURL / HTTP)
 
 ```bash
+# 1. Caso normal (Happy Path)
+curl -i ...
+
+# 2. Caso borde (Edge Case)
 curl -i ...
 ```
 
 ### Criterios de Aceptación (Definition of Done - DoD)
 
-- [ ] [Criterio 1]
-- [ ] [Criterio 2]
+- [ ] [Criterio específico y verificable 1]
+- [ ] [Criterio específico y verificable 2]
 - [ ] Suite de tests y linters pasando (`bun test`, `bun run lint`).
 
 ---
 
-## 🧠 5. Checklist de Active Recall
+## 🧠 6. Checklist de Active Recall
 
 - [ ] ¿Puedo explicar sin ver la nota en qué momento exacto del pipeline se ejecuta...?
 - [ ] ¿Por qué falla si hago...?
-
-```
+````
 
 ### Gradual Hint Escalation
 
@@ -246,4 +276,7 @@ curl -i ...
 - **Common Gotchas**:
   - _Dependency Resolution Error_: Ensure the missing provider is exported in its module and the consuming module imports that module.
   - _Circular Dependencies_: Use `forwardRef(() => ModuleName)` or reconsider the architectural boundaries.
+
+```
+
 ```
