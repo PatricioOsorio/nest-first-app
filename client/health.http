@@ -1,4 +1,6 @@
-@baseUrl = http://localhost:8888/api/v1
+# ==============================================================================
+# Health Check Endpoint
+# ==============================================================================
 
-### health check
+### Health Check (System Liveness)
 GET {{baseUrl}}/health

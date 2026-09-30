@@ -1,44 +1,100 @@
-@baseUrl = http://localhost:8888/api/v1
+# ==============================================================================
+# 1. HAPPY PATH (CRUD Lifecycle con Request Chaining)
+# ==============================================================================
 
-### ! get all tasks
+### 1.1 List all tasks
 GET {{baseUrl}}/tasks
+x-api-key: {{apiKey}}
 
-### ! get a task
-GET {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
-
-### ! get a task - 404
-GET {{baseUrl}}/tasks/error
-
-### ! create a task
+### 1.2 Create a new task (USER role)
+# @name createTask
 POST {{baseUrl}}/tasks
-Content-Type: application/json
+x-api-key: {{apiKey}}
+x-user-role: USER
 
 {
-  "title": "New Task",
-  "description": "Description for New Task",
-  "userId" : "fcea2b64-2dba-47d1-ac32-cdc13541efeb",
+  "title": "Aprender Request Chaining",
+  "description": "Automatizar flujos de prueba en VS Code REST Client",
+  "userId": "{{validUserId}}"
 }
 
-### ! update a task
-PUT {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
-Content-Type: application/json
+### Extraer dinámicamente el ID generado para las siguientes peticiones
+@createdTaskId = {{createTask.response.body.id}}
+
+### 1.3 Get created task by ID
+GET {{baseUrl}}/tasks/{{createdTaskId}}
+x-api-key: {{apiKey}}
+
+### 1.4 Replace task (PUT)
+PUT {{baseUrl}}/tasks/{{createdTaskId}}
+x-api-key: {{apiKey}}
+x-user-role: USER
 
 {
-  "title": "Updated Task",
-  "description": "Description for Updated Task",
+  "userId": "{{validUserId}}",
+  "title": "Aprender Request Chaining (Completado)",
+  "description": "Automatización exitosa sin copiar UUIDs",
   "completed": true
 }
 
-### ! patch a task
-PATCH {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
-Content-Type: application/json
+### 1.5 Partial update task (PATCH)
+PATCH {{baseUrl}}/tasks/{{createdTaskId}}
+x-api-key: {{apiKey}}
+x-user-role: USER
 
 {
   "completed": false
 }
 
-### ! delete a task
-DELETE {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
+### 1.6 Delete created task (ADMIN role required)
+DELETE {{baseUrl}}/tasks/{{createdTaskId}}
+x-api-key: {{apiKey}}
+x-user-role: ADMIN
 
-### ! delete a task - 404
-DELETE {{baseUrl}}/tasks/error
+# ==============================================================================
+# 2. SECURITY & AUTHORIZATION MATRIX (Guards Verification: 401 / 403)
+# ==============================================================================
+
+### 2.1 Request sin x-api-key -> 401 Unauthorized
+GET {{baseUrl}}/tasks
+
+### 2.2 Request con x-api-key inválida -> 401 Unauthorized
+GET {{baseUrl}}/tasks
+x-api-key: invalid-secret-key
+
+### 2.3 Rol VIEWER intentando crear tarea -> 403 Forbidden
+POST {{baseUrl}}/tasks
+x-api-key: {{apiKey}}
+x-user-role: VIEWER
+
+{
+  "title": "Intento no autorizado",
+  "userId": "{{validUserId}}"
+}
+
+### 2.4 Rol USER intentando borrar tarea -> 403 Forbidden
+DELETE {{baseUrl}}/tasks/dc15f411-3770-420c-9d4e-1f670524ae48
+x-api-key: {{apiKey}}
+x-user-role: USER
+
+# ==============================================================================
+# 3. DOMAIN VALIDATION & ERROR HANDLING (Pipes & Filters: 400 / 404)
+# ==============================================================================
+
+### 3.1 ID no es UUID válido -> 400 Bad Request (ParseUUIDPipe)
+GET {{baseUrl}}/tasks/invalid-uuid-format
+x-api-key: {{apiKey}}
+
+### 3.2 Tarea no encontrada -> 404 Not Found (UUID generado al vuelo con {{$guid}})
+GET {{baseUrl}}/tasks/{{$guid}}
+x-api-key: {{apiKey}}
+
+### 3.3 Creación con usuario inexistente -> 404 Not Found (UUID aleatorio para userId)
+POST {{baseUrl}}/tasks
+x-api-key: {{apiKey}}
+x-user-role: USER
+
+{
+  "title": "Tarea sin dueño real",
+  "userId": "{{$guid}}"
+}

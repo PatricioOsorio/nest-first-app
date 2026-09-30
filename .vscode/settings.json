@@ -9,5 +9,22 @@
 
   // 🎯 Preferir imports relativos cortos para hermanos y alias para cruzar módulos
   "typescript.preferences.importModuleSpecifier": "shortest",
-  "javascript.preferences.importModuleSpecifier": "shortest"
+  "javascript.preferences.importModuleSpecifier": "shortest",
+
+  // 🌐 REST Client configuration
+  "rest-client.defaultHeaders": {
+    "Content-Type": "application/json"
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "baseUrl": "http://localhost:8888/api/v1",
+      "apiKey": "nest-sandbox-secret-key",
+      "validUserId": "fcea2b64-2dba-47d1-ac32-cdc13541efeb"
+    },
+    "local": {
+      "baseUrl": "http://localhost:8888/api/v1",
+      "apiKey": "nest-sandbox-secret-key",
+      "validUserId": "fcea2b64-2dba-47d1-ac32-cdc13541efeb"
+    }
+  }
 }
