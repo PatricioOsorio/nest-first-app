@@ -98,3 +98,19 @@ x-user-role: USER
   "title": "Tarea sin dueño real",
   "userId": "{{$guid}}"
 }
+
+# ==============================================================================
+# 4. UNHANDLED EXCEPTIONS (Global Exception Filter: 500)
+# ==============================================================================
+### 4.1 Error de validacion (400 bad request con array de errores)
+POST {{baseUrl}}/tasks
+x-api-key: {{apiKey}}
+x-user-role: USER
+
+{
+  "invalidField": "invalidValue"
+}
+
+### 4.2 Error no manejado (500 Internal Server Error)
+GET {{baseUrl}}/tasks/simulation/unhandled-error
+x-api-key: {{apiKey}}

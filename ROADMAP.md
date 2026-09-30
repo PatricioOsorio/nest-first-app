@@ -130,7 +130,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: `ExceptionFilter`, decorador `@Catch()`, captura de `HttpException` y excepciones no controladas.
 - **Hands-on Challenge**: Implementar un Exception Filter global que capture errores inesperados, enmascare detalles internos y devuelva un JSON uniforme.
 - **DoD**: Errores no controlados retornan `500 Internal Server Error` sin exponer stacktraces en producción.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ### 2.6 Custom Parameter Decorators & ExecutionContext
 

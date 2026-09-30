@@ -24,6 +24,11 @@ import { TaskService, type ITask } from './tasks.service';
 export class TasksController {
   constructor(private readonly taskService: TaskService) {}
 
+  @Get('simulation/unhandled-error')
+  simulateUnhandledError(): void {
+    throw new Error('Database disk failure or connection pool exhausted');
+  }
+
   @Get()
   getAll(): ITask[] {
     return this.taskService.findAll();

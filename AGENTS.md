@@ -34,6 +34,7 @@ Default development philosophy: **ponytail** (maximum simplicity, zero bloat) �
   - One clean, expressive line/pattern before fifty lines of unnecessary abstraction.
   - Avoid premature optimization and speculative architecture until a real requirement justifies it.
   - **Notes boundary**: Pedagogical notes (`notes/`) cut the fat on theory (no historical trivia or encyclopedic dumps), but **the Hands-on Challenge must NEVER be compromised or ambiguated**. Theory is lean; the challenge specification is exhaustive: explicit functional requirements, input/output contracts, edge cases, and verifiable criteria. Zero ambiguity on _what_ is expected, so the user's cognitive energy is 100% focused on _how_ to architect and implement it.
+  - **Atomic Blueprint Rule**: Notes must include minimal, idiomatic code blueprints in completely unrelated domains (15–25 lines) to ground syntax and architectural anatomy before the user tackles the challenge.
 
 ---
 
@@ -118,8 +119,9 @@ Non-trivial = anything beyond a single-line fix (new files, refactors, feature a
 2. **Step 2: Lean Architecture Briefing & Note Generation (`notes/`)**:
    - **Direct & Fast Generation**: The main agent drafts the **Lean Architecture Note** directly in seconds following the Lean Template below.
    - **Must include Real-World Use Cases & Decision Matrix**: Explicitly answers _when_ to use this component in real production and _why_ not to use another pipeline layer (e.g., Middleware vs Guard vs Interceptor).
+   - **Must include Atomic Blueprint**: Concrete 15–25 line snippet in an external domain (e.g. billing, logistics) showing idiomatic NestJS anatomy (decorators, constructor DI, typing).
    - **Subagent / Research by Exception Only**: Do not spin up subagents for standard, stable NestJS core topics. Delegate to a research subagent _only_ when resolving version ambiguities (e.g. Nest 11 vs 10 API diffs) or complex third-party library integrations.
-   - **Briefing in chat**: Deliver a concise briefing highlighting the **core mental model**, the **lifecycle diagram**, the **real-world use cases**, and the **Hands-on Challenge immediately**.
+   - **Briefing in chat**: Deliver a concise briefing highlighting the **core mental model**, the **lifecycle diagram**, the **atomic blueprint**, the **real-world use cases**, and the **Hands-on Challenge immediately**.
 3. **Step 3: Immediate Hands-on Challenge (The Centerpiece of Learning)**:
    - The challenge is where deep learning occurs: **connecting architectural concepts through deliberate practice**.
    - **Exhaustive Specification, Zero Ambiguity**: The challenge MUST be thoroughly specified. Never compress, truncate, or leave requirements ambiguous to save space. Theory is lean; the challenge is precise and comprehensive.
@@ -167,13 +169,21 @@ flowchart TD
 
 ---
 
-## 📜 2. El Contrato Esencial
+## 📜 2. El Contrato Esencial & Blueprint Idiomático
 
 [Firmas de tipos, interfaces y decoradores indispensables en TypeScript].
 
-- **Interfaz base**: `[InterfaceName]` (`method(arg: Type): ReturnType`)
+- **Interfaz / Clase base**: `[InterfaceName]` (`method(arg: Type): ReturnType`)
 - **Decoradores clave**: `@DecoratorName()`
 - **Mapeo mental rápido (C# / Angular)**: [1 línea de analogía directa, solo si aporta]
+
+### Blueprint Canónico (Dominio Externo: e.g. Facturación, Logística)
+
+> 💡 _Snippet atómico (15–25 líneas) que modela la anatomía canónica y buenas prácticas de NestJS (decoradores, DI en constructor, tipado estricto). Si el tema abarca dos variantes críticas (ej. Transformación vs Resiliencia, o Global vs Scoped), incluir dos snippets atómicos separados en vez de un bloque inflado._
+
+```typescript
+// Snippet canónico en dominio ajeno mostrando la anatomía real de NestJS
+```
 
 ---
 
