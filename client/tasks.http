@@ -114,3 +114,17 @@ x-user-role: USER
 ### 4.2 Error no manejado (500 Internal Server Error)
 GET {{baseUrl}}/tasks/simulation/unhandled-error
 x-api-key: {{apiKey}}
+
+# =============================================================================
+# 5. CUSTOM PARAM DECORATORS (RequestUser & ClientIp Decorators)
+# =============================================================================
+### 5.1 Obtener perfil e IP
+GET {{baseUrl}}/tasks/me
+x-api-key: {{apiKey}}
+x-user-role: USER
+
+### 5.2 Obtener perfil con proxy simulado (x-forwarded-for)
+GET {{baseUrl}}/tasks/me
+x-api-key: {{apiKey}}
+x-user-role: ADMIN
+x-forwarded-for: 203.0.113.195, 70.41.3.18

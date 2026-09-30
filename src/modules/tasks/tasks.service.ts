@@ -1,16 +1,9 @@
 import { UsersService } from '@/users/users.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto, PatchTaskDto, UpdateTaskDto } from './dto';
+import { ITaskEntity } from './entities/task.entity';
 
-export interface ITask {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-  userId: string;
-}
-
-const SEED: ITask[] = [
+const SEED: ITaskEntity[] = [
   {
     id: 'dc15f411-3770-420c-9d4e-1f670524ae48',
     title: 'Task 1',
@@ -36,15 +29,15 @@ const SEED: ITask[] = [
 
 @Injectable()
 export class TaskService {
-  private readonly tasks: ITask[] = SEED;
+  private readonly tasks: ITaskEntity[] = SEED;
 
   constructor(private readonly usersService: UsersService) {}
 
-  findAll(): ITask[] {
+  findAll(): ITaskEntity[] {
     return this.tasks;
   }
 
-  findOne(id: string): ITask {
+  findOne(id: string): ITaskEntity {
     const task = this.tasks.find((t) => t.id === id);
 
     if (!task) throw new NotFoundException('ups, task not found');
@@ -52,10 +45,10 @@ export class TaskService {
     return task;
   }
 
-  create(dto: CreateTaskDto): ITask {
+  create(dto: CreateTaskDto): ITaskEntity {
     const userAssigned = this.usersService.findOne(dto.userId);
 
-    const newTask: ITask = {
+    const newTask: ITaskEntity = {
       id: crypto.randomUUID(),
       title: dto.title,
       description: dto.description,
@@ -68,7 +61,7 @@ export class TaskService {
     return newTask;
   }
 
-  replace(id: string, dto: UpdateTaskDto): ITask {
+  replace(id: string, dto: UpdateTaskDto): ITaskEntity {
     const task = this.findOne(id);
 
     task.title = dto.title;
@@ -79,7 +72,7 @@ export class TaskService {
     return task;
   }
 
-  patch(id: string, dto: PatchTaskDto): ITask {
+  patch(id: string, dto: PatchTaskDto): ITaskEntity {
     const task = this.findOne(id);
 
     task.title = dto.title ?? task.title;

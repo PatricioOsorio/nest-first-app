@@ -1,16 +1,8 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import type { Request } from 'express';
 import { Observable } from 'rxjs';
 import { EUserRole } from '../enums/user-role.enum';
-
-interface IUser {
-  role: EUserRole;
-}
-
-export interface IAuthenticatedRequest extends Request {
-  user?: IUser;
-}
+import { IAuthenticatedRequest } from '../interfaces/authenticated-request.interface';
 
 @Injectable()
 export class ApiKeyGuard implements CanActivate {
@@ -25,8 +17,10 @@ export class ApiKeyGuard implements CanActivate {
     if (!apiKey || apiKey !== validApiKey) throw new UnauthorizedException('Invalid API key');
 
     const role = (request.headers['x-user-role'] as EUserRole) || EUserRole.VIEWER;
+    const id = (request.headers['x-user-id'] as string) ?? 'fcea2b64-2dba-47d1-ac32-cdc13541efeb';
+    const email = (request.headers['x-user-email'] as string) ?? 'dev@sandbox.com';
 
-    request.user = { role };
+    request.user = { role, id, email };
 
     return true;
   }

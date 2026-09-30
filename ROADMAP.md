@@ -16,7 +16,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 
 - [x] **Fase 0: Project Setup, Tooling & Production Foundations**
 - [x] **Fase 1: NestJS Core & Primitivas Fundamentales**
-- [ ] **Fase 2: Request-Response Lifecycle & Pipeline**
+- [x] **Fase 2: Request-Response Lifecycle & Pipeline**
 - [ ] **Fase 3: Inyección de Dependencias Avanzada & Dynamic Modules**
 - [ ] **Fase 4: Configuración, Persistencia & Repository Pattern**
 - [ ] **Fase 5: Seguridad, Autenticación (JWT) & Autorización (RBAC)**
@@ -137,7 +137,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: `createParamDecorator()`, abstracción sobre `ExecutionContext` para extraer datos limpios en la firma del método.
 - **Hands-on Challenge**: Crear decoradores como `@CurrentUser()` o `@ClientIp()`.
 - **DoD**: Controlador consumiendo datos del contexto sin acoplarse al objeto `req` crudo de Express.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ---
 
