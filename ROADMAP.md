@@ -149,7 +149,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Paralelismo**: `InjectionToken` en Angular; IoC registration en C#.
 - **Hands-on Challenge**: Inyectar configuraciones externas, clientes de terceros o implementaciones mock usando `useFactory` y tokens personalizados.
 - **DoD**: Servicio desacoplado de la implementación concreta mediante interfaces y tokens.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ### 3.2 Dynamic Modules (`forRoot`, `register`, `forRootAsync`)
 

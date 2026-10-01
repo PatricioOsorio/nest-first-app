@@ -1,7 +1,8 @@
 import { UsersService } from '@/users/users.service';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto, PatchTaskDto, UpdateTaskDto } from './dto';
 import { ITaskEntity } from './entities/task.entity';
+import { type ITaskNotifier, TASK_NOTIFIER_TOKEN } from './interfaces/task-notifier.interface';
 
 const SEED: ITaskEntity[] = [
   {
@@ -31,7 +32,10 @@ const SEED: ITaskEntity[] = [
 export class TaskService {
   private readonly tasks: ITaskEntity[] = SEED;
 
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    @Inject(TASK_NOTIFIER_TOKEN) private readonly taskNotifier: ITaskNotifier,
+  ) {}
 
   findAll(): ITaskEntity[] {
     return this.tasks;
@@ -57,6 +61,8 @@ export class TaskService {
     };
 
     this.tasks.push(newTask);
+
+    void this.taskNotifier.notifyCreated(newTask);
 
     return newTask;
   }
