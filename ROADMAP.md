@@ -156,7 +156,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: Módulos configurables en tiempo de compilación/ejecución con soporte para configuración asíncrona.
 - **Hands-on Challenge**: Crear un módulo dinámico reutilizable (ej. un módulo de notificaciones o cliente HTTP configurable).
 - **DoD**: Módulo importado en `AppModule` mediante `.forRootAsync()` consumiendo variables de entorno.
-- **Estado**: ⏳ Pendiente
+- **Estado**: 🔄 En progreso
 
 ### 3.3 Scopes de Inyección & Lifecycle Hooks
 
