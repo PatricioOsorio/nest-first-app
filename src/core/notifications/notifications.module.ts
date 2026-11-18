@@ -34,12 +34,12 @@ export class NotificationsModule {
   static forRootAsync(options: INotificationsModuleAsyncOptions): DynamicModule {
     return {
       ...this.sharedConfig(options),
-      imports: options.imports || [],
+      imports: options.imports ?? [],
       providers: [
         {
           provide: NOTIFICATIONS_OPTIONS_TOKEN,
           useFactory: options.useFactory,
-          inject: options.inject || [],
+          inject: options.inject ?? [],
         },
         NotificationsService,
       ],

@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FactoryProvider, ModuleMetadata } from '@nestjs/common';
+
 export const NOTIFICATIONS_OPTIONS_TOKEN = Symbol('NOTIFICATIONS_OPTIONS_TOKEN');
 
 export type INotificationChannel = 'console' | 'silent';
@@ -11,11 +12,11 @@ export interface INotificationsModuleOptions {
 
 export interface INotificationsModuleAsyncOptions {
   isGlobal?: boolean;
-  imports?: any[];
+  imports?: ModuleMetadata['imports'];
   useFactory: (
-    ...args: any[]
+    ...args: never[]
   ) => Promise<INotificationsModuleOptions> | INotificationsModuleOptions;
-  inject?: any[];
+  inject?: FactoryProvider['inject'];
 }
 
 export interface INotificationResult {

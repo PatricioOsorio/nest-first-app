@@ -62,7 +62,7 @@ export class TaskService {
 
     this.tasks.push(newTask);
 
-    void this.notificationsService.notify('task created', {
+    this.notificationsService.notify('task created', {
       ...newTask,
     });
 

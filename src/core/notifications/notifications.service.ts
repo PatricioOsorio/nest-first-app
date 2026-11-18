@@ -23,12 +23,12 @@ export class NotificationsService {
     }
 
     this.logger.log(
-      `[${this.options.appName}] Notification: ${message} - Context: ${JSON.stringify(context || {})}`,
+      `[${this.options.appName}] Notification: ${message} - Context: ${JSON.stringify(context ?? {})}`,
     );
 
     return {
       sentAt: new Date(),
-      channel: this.options.channel || 'console',
+      channel: this.options.channel ?? 'console',
       delivered: true,
     };
   }
