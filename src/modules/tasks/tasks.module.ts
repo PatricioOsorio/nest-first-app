@@ -1,3 +1,4 @@
+import { AuditModule } from '@/core/audit/audit.module';
 import { UsersModule } from '@/users/users.module';
 import { Module } from '@nestjs/common';
 import { TasksController } from './tasks.controller';
@@ -6,6 +7,6 @@ import { TaskService } from './tasks.service';
 @Module({
   controllers: [TasksController],
   providers: [TaskService],
-  imports: [UsersModule],
+  imports: [UsersModule, AuditModule],
 })
 export class TasksModule {}

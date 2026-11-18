@@ -17,7 +17,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - [x] **Fase 0: Project Setup, Tooling & Production Foundations**
 - [x] **Fase 1: NestJS Core & Primitivas Fundamentales**
 - [x] **Fase 2: Request-Response Lifecycle & Pipeline**
-- [ ] **Fase 3: Inyección de Dependencias Avanzada & Dynamic Modules**
+- [x] **Fase 3: Inyección de Dependencias Avanzada & Dynamic Modules**
 - [ ] **Fase 4: Configuración, Persistencia & Repository Pattern**
 - [ ] **Fase 5: Seguridad, Autenticación (JWT) & Autorización (RBAC)**
 - [ ] **Fase 6: Clean / Hexagonal Architecture & Enterprise Patterns**
@@ -163,7 +163,7 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: `Scope.DEFAULT` (Singleton), `Scope.REQUEST`, `Scope.TRANSIENT`, hooks `OnModuleInit`, `OnApplicationBootstrap`, `OnModuleDestroy`.
 - **Hands-on Challenge**: Analizar el impacto de rendimiento de `Scope.REQUEST` y gestionar conexiones en el ciclo de vida.
 - **DoD**: Proveedor gestionando su inicialización y limpieza mediante hooks del ciclo de vida.
-- **Estado**: ⏳ Pendiente
+- **Estado**: ✅ Completado
 
 ---
 

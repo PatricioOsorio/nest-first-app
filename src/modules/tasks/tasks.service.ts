@@ -1,3 +1,4 @@
+import { AuditSinkService } from '@/core/audit/audit-sink.service';
 import { NotificationsService } from '@/core/notifications/notifications.service';
 import { UsersService } from '@/users/users.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
@@ -35,6 +36,7 @@ export class TaskService {
   constructor(
     private readonly usersService: UsersService,
     private readonly notificationsService: NotificationsService,
+    private readonly auditSink: AuditSinkService,
   ) {}
 
   findAll(): ITaskEntity[] {
@@ -64,6 +66,12 @@ export class TaskService {
 
     this.notificationsService.notify('task created', {
       ...newTask,
+    });
+
+    this.auditSink.record({
+      action: 'TASK_CREATED',
+      taskId: newTask.id,
+      actorId: newTask.userId,
     });
 
     return newTask;

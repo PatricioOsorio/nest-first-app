@@ -1,0 +1,15 @@
+### Diagnostic
+GET {{baseUrl}}/audit/diagnostics
+x-api-key: {{apiKey}}
+x-user-id: {{validUserId}}
+
+### Create task
+POST {{baseUrl}}/tasks
+x-api-key: {{apiKey}}
+x-user-role: USER
+
+{
+  "title": "Check lifecycle",
+  "description": "AuditSink singleton + shutdown hook",
+  "userId": "{{validUserId}}"
+}
