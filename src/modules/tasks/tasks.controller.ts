@@ -53,18 +53,18 @@ export class TasksController {
   }
 
   @Get()
-  getAll(): ITaskEntity[] {
+  getAll(): Promise<ITaskEntity[]> {
     return this.taskService.findAll();
   }
 
   @Get(':id')
-  get(@Param('id', TrimPipe, ParseUUIDPipe) id: string): ITaskEntity {
+  get(@Param('id', TrimPipe, ParseUUIDPipe) id: string): Promise<ITaskEntity> {
     return this.taskService.findOne(id);
   }
 
   @Post()
   @Roles([EUserRole.ADMIN, EUserRole.USER])
-  create(@Body() body: CreateTaskDto): ITaskEntity {
+  create(@Body() body: CreateTaskDto): Promise<ITaskEntity> {
     return this.taskService.create(body);
   }
 
@@ -73,20 +73,23 @@ export class TasksController {
   update(
     @Param('id', TrimPipe, ParseUUIDPipe) id: string,
     @Body() body: UpdateTaskDto,
-  ): ITaskEntity {
+  ): Promise<ITaskEntity> {
     return this.taskService.replace(id, body);
   }
 
   @Patch(':id')
   @Roles([EUserRole.ADMIN, EUserRole.USER])
-  patch(@Param('id', TrimPipe, ParseUUIDPipe) id: string, @Body() body: PatchTaskDto): ITaskEntity {
+  patch(
+    @Param('id', TrimPipe, ParseUUIDPipe) id: string,
+    @Body() body: PatchTaskDto,
+  ): Promise<ITaskEntity> {
     return this.taskService.patch(id, body);
   }
 
   @Delete(':id')
   @HttpCode(204)
   @Roles([EUserRole.ADMIN])
-  delete(@Param('id', TrimPipe, ParseUUIDPipe) id: string): void {
+  delete(@Param('id', TrimPipe, ParseUUIDPipe) id: string): Promise<void> {
     return this.taskService.remove(id);
   }
 }

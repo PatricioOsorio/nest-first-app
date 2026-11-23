@@ -10,6 +10,7 @@ import { AppService } from './app.service';
 import { GlobalExceptionFilter } from './common/filters/global-exception.filter';
 import { ResponseTransformInterceptor } from './common/interceptors/response-transform.interceptor';
 import { AuditModule } from './core/audit/audit.module';
+import { PrismaModule } from './core/database/prisma.module';
 import { NotificationsModule } from './core/notifications/notifications.module';
 import { TasksModule } from './modules/tasks/tasks.module';
 import { UsersModule } from './modules/users/users.module';
@@ -33,6 +34,7 @@ import { UsersModule } from './modules/users/users.module';
       inject: [ConfigService],
     }),
     AuditModule,
+    PrismaModule,
   ],
   controllers: [AppController],
   providers: [

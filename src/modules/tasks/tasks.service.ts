@@ -1,107 +1,116 @@
 import { AuditSinkService } from '@/core/audit/audit-sink.service';
+import { PrismaService } from '@/core/database/prisma.service';
 import { NotificationsService } from '@/core/notifications/notifications.service';
+import type { Task as PrismaTask } from '@/generated/prisma/client';
 import { UsersService } from '@/users/users.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto, PatchTaskDto, UpdateTaskDto } from './dto';
 import { ITaskEntity } from './entities/task.entity';
 
-const SEED: ITaskEntity[] = [
-  {
-    id: 'dc15f411-3770-420c-9d4e-1f670524ae48',
-    title: 'Task 1',
-    description: 'Description for Task 1',
-    completed: false,
-    userId: 'TEST1',
-  },
-  {
-    id: '9a29c615-64ef-4fbd-af4d-a93ec57cf0f2',
-    title: 'Task 2',
-    description: 'Description for Task 2',
-    completed: true,
-    userId: 'TEST2',
-  },
-  {
-    id: '0036078f-6214-4657-bef5-77ffccdb0cb7',
-    title: 'Task 3',
-    description: 'Description for Task 3',
-    completed: false,
-    userId: 'TEST3',
-  },
-];
-
 @Injectable()
 export class TaskService {
-  private readonly tasks: ITaskEntity[] = SEED;
-
   constructor(
     private readonly usersService: UsersService,
     private readonly notificationsService: NotificationsService,
     private readonly auditSink: AuditSinkService,
+    private readonly prismaService: PrismaService,
   ) {}
 
-  findAll(): ITaskEntity[] {
-    return this.tasks;
+  private toEntity(prismaTask: PrismaTask): ITaskEntity {
+    return {
+      id: prismaTask.id,
+      title: prismaTask.title,
+      description: prismaTask.description,
+      completed: prismaTask.completed,
+      userId: prismaTask.userId,
+    };
   }
 
-  findOne(id: string): ITaskEntity {
-    const task = this.tasks.find((t) => t.id === id);
+  private toEntities(prismaTasks: PrismaTask[]): ITaskEntity[] {
+    return prismaTasks.map((task) => this.toEntity(task));
+  }
+
+  async findAll(): Promise<ITaskEntity[]> {
+    const tasks = await this.prismaService.task.findMany();
+
+    return this.toEntities(tasks);
+  }
+
+  async findOne(id: string): Promise<ITaskEntity> {
+    const task = await this.prismaService.task.findUnique({
+      where: { id },
+    });
 
     if (!task) throw new NotFoundException('ups, task not found');
 
-    return task;
+    return this.toEntity(task);
   }
 
-  create(dto: CreateTaskDto): ITaskEntity {
-    const userAssigned = this.usersService.findOne(dto.userId);
+  async create(dto: CreateTaskDto): Promise<ITaskEntity> {
+    await this.usersService.findOne(dto.userId);
+    const taskCreated = await this.prismaService.task.create({
+      data: {
+        title: dto.title,
+        description: dto.description ?? '',
+        userId: dto.userId,
+      },
+    });
 
-    const newTask: ITaskEntity = {
-      id: crypto.randomUUID(),
-      title: dto.title,
-      description: dto.description,
-      completed: false,
-      userId: userAssigned.id,
-    };
-
-    this.tasks.push(newTask);
+    const taskCreatedEntity = this.toEntity(taskCreated);
 
     this.notificationsService.notify('task created', {
-      ...newTask,
+      ...taskCreatedEntity,
     });
 
     this.auditSink.record({
       action: 'TASK_CREATED',
-      taskId: newTask.id,
-      actorId: newTask.userId,
+      taskId: taskCreatedEntity.id,
+      actorId: taskCreatedEntity.userId,
     });
 
-    return newTask;
+    return taskCreatedEntity;
   }
 
-  replace(id: string, dto: UpdateTaskDto): ITaskEntity {
-    const task = this.findOne(id);
+  async replace(id: string, dto: UpdateTaskDto): Promise<ITaskEntity> {
+    // verify that the task exists and user exists
+    await this.findOne(id);
+    await this.usersService.findOne(dto.userId);
 
-    task.title = dto.title;
-    task.description = dto.description;
-    task.completed = dto.completed;
-    task.userId = dto.userId;
+    const taskUpdated = await this.prismaService.task.update({
+      where: { id },
+      data: {
+        title: dto.title,
+        description: dto.description ?? '',
+        completed: dto.completed,
+        userId: dto.userId,
+      },
+    });
 
-    return task;
+    return this.toEntity(taskUpdated);
   }
 
-  patch(id: string, dto: PatchTaskDto): ITaskEntity {
-    const task = this.findOne(id);
+  async patch(id: string, dto: PatchTaskDto): Promise<ITaskEntity> {
+    await this.findOne(id);
+    await this.usersService.findOne(dto.userId);
 
-    task.title = dto.title ?? task.title;
-    task.description = dto.description ?? task.description;
-    task.completed = dto.completed ?? task.completed;
-    task.userId = dto.userId ?? task.userId;
+    const taskUpdated = await this.prismaService.task.update({
+      where: { id },
+      data: {
+        title: dto.title,
+        description: dto.description ?? '',
+        completed: dto.completed,
+        userId: dto.userId,
+      },
+    });
 
-    return task;
+    return this.toEntity(taskUpdated);
   }
 
-  remove(id: string): void {
-    const task = this.findOne(id);
+  async remove(id: string): Promise<void> {
+    await this.findOne(id);
 
-    this.tasks.splice(this.tasks.indexOf(task), 1);
+    await this.prismaService.task.delete({
+      where: { id },
+    });
   }
 }

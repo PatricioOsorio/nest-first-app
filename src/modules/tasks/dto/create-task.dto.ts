@@ -25,7 +25,7 @@ export class CreateTaskDto {
   @IsString()
   @IsOptional()
   @MaxLength(500)
-  description!: string;
+  description?: string;
 
   @IsString()
   @IsNotEmpty()
@@ -34,7 +34,7 @@ export class CreateTaskDto {
 
   @IsEnum(TaskPriority)
   @IsOptional()
-  priority: TaskPriority = TaskPriority.LOW;
+  priority?: TaskPriority = TaskPriority.LOW;
 
   @IsArray()
   @IsString({ each: true })

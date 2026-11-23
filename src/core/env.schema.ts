@@ -5,6 +5,7 @@ export const envSchema = z.object({
   PORT: z.preprocess(Number, z.number().int().min(1).max(65535)),
   APP_NAME: z.string(),
   API_KEY: z.string().default('nest-sandbox-secret-key'),
+  DATABASE_URL: z.string().min(1),
 });
 
 export type IEnvSchema = z.infer<typeof envSchema>;

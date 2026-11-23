@@ -35,3 +35,8 @@ Thumbs.db
 .eslintcache
 *.tsbuildinfo
 .swc
+
+# Prisma
+*.db
+*.db-journal
+/src/generated
