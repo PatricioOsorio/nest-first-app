@@ -39,5 +39,5 @@ export class CreateTaskDto {
   @IsArray()
   @IsString({ each: true })
   @IsOptional()
-  tags: string[] = [];
+  tags?: string[] = [];
 }

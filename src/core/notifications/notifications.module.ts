@@ -2,7 +2,7 @@ import { type DynamicModule, Module } from '@nestjs/common';
 import {
   INotificationsModuleAsyncOptions,
   INotificationsModuleOptions,
-  NOTIFICATIONS_OPTIONS_TOKEN,
+  TOKEN_NOTIFICATIONS_OPTIONS,
 } from './notifications.interface';
 import { NotificationsService } from './notifications.service';
 
@@ -23,7 +23,7 @@ export class NotificationsModule {
       ...this.sharedConfig(options),
       providers: [
         {
-          provide: NOTIFICATIONS_OPTIONS_TOKEN,
+          provide: TOKEN_NOTIFICATIONS_OPTIONS,
           useValue: options,
         },
         NotificationsService,
@@ -37,7 +37,7 @@ export class NotificationsModule {
       imports: options.imports ?? [],
       providers: [
         {
-          provide: NOTIFICATIONS_OPTIONS_TOKEN,
+          provide: TOKEN_NOTIFICATIONS_OPTIONS,
           useFactory: options.useFactory,
           inject: options.inject ?? [],
         },

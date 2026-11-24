@@ -2,7 +2,7 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import {
   INotificationResult,
   type INotificationsModuleOptions,
-  NOTIFICATIONS_OPTIONS_TOKEN,
+  TOKEN_NOTIFICATIONS_OPTIONS,
 } from './notifications.interface';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class NotificationsService {
   private readonly logger = new Logger(NotificationsService.name);
 
   constructor(
-    @Inject(NOTIFICATIONS_OPTIONS_TOKEN) private readonly options: INotificationsModuleOptions,
+    @Inject(TOKEN_NOTIFICATIONS_OPTIONS) private readonly options: INotificationsModuleOptions,
   ) {}
 
   notify(message: string, context?: Record<string, unknown>): INotificationResult {

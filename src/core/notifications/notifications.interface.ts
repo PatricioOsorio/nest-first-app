@@ -1,6 +1,6 @@
 import { FactoryProvider, ModuleMetadata } from '@nestjs/common';
 
-export const NOTIFICATIONS_OPTIONS_TOKEN = Symbol('NOTIFICATIONS_OPTIONS_TOKEN');
+export const TOKEN_NOTIFICATIONS_OPTIONS = Symbol('NOTIFICATIONS_OPTIONS_TOKEN');
 
 export type INotificationChannel = 'console' | 'silent';
 

@@ -84,7 +84,13 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@/users/(.*)$": "<rootDir>/modules/users/$1",
+      "^@/core/(.*)$": "<rootDir>/core/$1",
+      "^@/common/(.*)$": "<rootDir>/common/$1",
+      "^@/(.*)$": "<rootDir>/$1"
+    }
   },
   "lint-staged": {
     "*.ts": [
