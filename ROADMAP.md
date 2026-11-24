@@ -174,14 +174,14 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: Mapeo relacional, migraciones, pooling de conexiones y ciclo de vida de la base de datos.
 - **Hands-on Challenge**: Configurar modelos, migraciones y conexión a una base de datos relacional (ej. PostgreSQL / SQLite para desarrollo).
 - **DoD**: Esquema migrado y operaciones de lectura/escritura funcionando contra la base de datos.
-- **Estado**: 🔄 En progreso
+- **Estado**: ✅ Completado
 
 ### 4.2 Repository Pattern & Aislamiento de Entidades
 
 - **Under the Hood**: Desacoplar el modelo de dominio de la persistencia de base de datos (Ports & Adapters).
 - **Hands-on Challenge**: Implementar una interfaz de repositorio en el dominio y su adaptador concreto en infraestructura.
 - **DoD**: Los servicios de aplicación dependen únicamente de la interfaz del repositorio, no del ORM directamente.
-- **Estado**: ⏳ Pendiente
+- **Estado**: 🔄 En progreso
 
 ### 4.3 Transacciones & Unit of Work
 
