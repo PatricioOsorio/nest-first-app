@@ -181,14 +181,14 @@ Cada tema abajo se procesa con el **5-Step Cognitive Learning Cycle** de [AGENTS
 - **Under the Hood**: Desacoplar el modelo de dominio de la persistencia de base de datos (Ports & Adapters).
 - **Hands-on Challenge**: Implementar una interfaz de repositorio en el dominio y su adaptador concreto en infraestructura.
 - **DoD**: Los servicios de aplicación dependen únicamente de la interfaz del repositorio, no del ORM directamente.
-- **Estado**: 🔄 En progreso
+- **Estado**: ✅ Completado
 
 ### 4.3 Transacciones & Unit of Work
 
 - **Under the Hood**: Manejo de transacciones ACID para operaciones atómicas multi-tabla.
 - **Hands-on Challenge**: Implementar un caso de uso que requiera atomicidad (ej. crear orden + descontar inventario).
 - **DoD**: Rollback automático en caso de fallo intermedio durante la operación.
-- **Estado**: ⏳ Pendiente
+- **Estado**: 🔄 En progreso
 
 ---
 

@@ -1,7 +1,7 @@
 import { PrismaService } from '@/core/database/prisma.service';
 import type { Task as PrismaTask } from '@/generated/prisma/client';
 import { Injectable } from '@nestjs/common';
-import { ITaskEntity } from '../entities/task.entity';
+import type { ITaskEntity } from '../entities/task.entity';
 import type {
   ICreateTaskData,
   IPatchTaskData,
@@ -44,7 +44,7 @@ export class PrismaTasksRepository implements ITaskRepository {
   }
 
   async create(data: ICreateTaskData): Promise<ITaskEntity> {
-    const newTask = await this.prismaService.task.create({
+    const newTask: PrismaTask = await this.prismaService.task.create({
       data: {
         title: data.title,
         description: data.description,

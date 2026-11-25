@@ -22,6 +22,8 @@ model User {
   tasks     Task[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  activityLogs ActivityLog[]
 }
 
 model Task {
@@ -33,4 +35,17 @@ model Task {
   updatedAt   DateTime @updatedAt
   createdAt   DateTime @default(now())
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  activityLogs ActivityLog[]
+}
+
+model ActivityLog {
+  id String @id @default(uuid())
+  action String
+  taskId String
+  actorId String
+  details String @default("")
+  createdAt DateTime @default(now())
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  actor User @relation(fields: [actorId], references: [id], onDelete: Cascade)
 }
